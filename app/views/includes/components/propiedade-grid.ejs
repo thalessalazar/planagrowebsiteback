@@ -1,5 +1,8 @@
-<article class="imovel_grid  <%= prop.vendido ? 'sold' : '' %> wow fadeInUp">
-    <%- prop.vendido ? '<div class="imovel_grid__sold"><div class="sold__ribbon"><span>'+ (prop.genero == 'Venda' ? 'vendido' : 'alugado') +'</span></div></div>' : ''%>
+<article class="imovel_grid  <%= prop.vendido ? 'sold' : prop.alugado ? 'sold' : '' %> wow fadeInUp">
+
+    <%- prop.vendido ? '<div class="imovel_grid__sold"><div class="sold__ribbon"><span>Vendido</span></div></div>' : 
+    prop.alugado ? '<div class="imovel_grid__sold"><div class="sold__ribbon"><span>Alugado</span></div></div>' : '' %>
+
     <div class="img_area">
         <%- prop.ativo ? '<div class="sale_btn">'+  (prop.genero == 'Ambos' ? 'Aluguel e Venda' : prop.genero) +'</div>' : ''%>
         <%- prop.destaque ? '<div class="featured_btn">Destaque</div>' : ''%>

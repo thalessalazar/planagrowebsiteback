@@ -3,6 +3,29 @@ const Propiedade = require('../../models/propiedade'),
     getQueryFilter = require('../../util/query-filter');
 const Banner = require('../../models/banner');
 
+exports.redefinirSalao = (req, res, next) => {
+    Propiedade.find({ tipo: 'Salão Comercial' }).then(props => {
+        for (prop of props) {
+            prop.tipo = 'Prédio Comercial';
+            prop.save();
+        }
+    }).catch(err => next(err, 500));
+}
+
+exports.mostraSalao = (req, res, next) => {
+    Propiedade.find({ tipo: 'Prédio Comercial' }).then(props => {
+        for (prop of props) {
+            console.log(prop.tipo);
+        }
+    }).catch(err => next(err, 500));
+}
+
+exports.mostrarbairro = (req, res, next) => {
+    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bageBairros => {
+        console.log(bageBairros);
+    });
+}
+
 exports.getComprar = (req, res, next) => {
     const currentPage = req.query.page ? parseInt(req.query.page) : 1,
         ITEMS_PER_PAGE = 24;
@@ -13,8 +36,6 @@ exports.getComprar = (req, res, next) => {
         vendido: 1,
         date: -1
     }
-
-
 
     if (req.body.genero || req.query.genero) {
         if (!query.$and) {
@@ -54,7 +75,6 @@ exports.getComprar = (req, res, next) => {
         if (req.body.ordenador == 'sc' || req.query.ordenador == 'sc') { sort.sedes = 1 }
         if (req.body.ordenador == 'sd' || req.query.ordenador == 'sd') { sort.sedes = -1 }
     }
-
 
     if (req.body.zona == 'Urbana' || req.query.zona == 'Urbana') {
         if (req.body.genero == 'Aluguel' || req.query.genero == 'Aluguel') {
@@ -107,6 +127,7 @@ exports.getComprar = (req, res, next) => {
                             return (x.destaque === y.destaque) ? 0 : x ? -1 : 1
                         })
                     }
+                    
                     Sobre.findOne()
                         .then(sobre => {
                             Banner.find({ referente: 'propriedade-banner' }).then(banner => {
@@ -114,23 +135,27 @@ exports.getComprar = (req, res, next) => {
                                     if (req.query == {} || req.body == {}) {
                                         let prop = props.sort()
                                     }
-                                    console.log(bannerimoveis);
-                                    res.render('shop/comprar', {
-                                        pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
-                                        props: props,
-                                        path: "/comprar",
-                                        hasNext: currentPage < totalPages,
-                                        hasPrevious: currentPage > 1,
-                                        totalPages,
-                                        currentPage,
-                                        robotsFollow: true,
-                                        sobre: sobre,
-                                        banner: banner,
-                                        bannerimoveis: bannerimoveis,
-                                        contact: true,
-                                        form: req.query,
-                                        genero: req.body.genero || req.query.genero
-                                    });
+                                    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairrosBage => {
+                                        console.log(bairrosBage);
+                                        res.render('shop/comprar', {
+                                            pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
+                                            props: props,
+                                            path: "/comprar",
+                                            hasNext: currentPage < totalPages,
+                                            hasPrevious: currentPage > 1,
+                                            totalPages,
+                                            currentPage,
+                                            robotsFollow: true,
+                                            sobre: sobre,
+                                            banner: banner,
+                                            bannerimoveis: bannerimoveis,
+                                            bairrosBage: bairrosBage,
+                                            contact: true,
+                                            form: req.query,
+                                            genero: req.body.genero || req.query.genero
+                                        });
+                                    })
+                                        .catch(err => next(err, 500));
                                 })
                                     .catch(err => next(err, 500));
                             })
@@ -159,7 +184,7 @@ exports.getPropiedade = (req, res, next) => {
 
             Sobre.findOne()
                 .then(sobre => {
-                    Banner.find({referente: 'compra-banner'}).then(banner => {
+                    Banner.find({ referente: 'compra-banner' }).then(banner => {
                         return res.render('shop/propriedade', {
                             pageTitle: prop.youtube_id,
                             prop: prop,
@@ -175,7 +200,7 @@ exports.getPropiedade = (req, res, next) => {
                             csrfToken: req.csrfToken(),
                         });
                     })
-                    .catch(err => next(err, 500))
+                        .catch(err => next(err, 500))
                 })
                 .catch(err => next(err, 500))
         })

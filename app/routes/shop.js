@@ -38,4 +38,9 @@ router.get('/contato', shopCtrl.contato.getContato);
 //verifica se o envio do formulário foi feito por robo, se passar envia o email
 router.post('/contato', shopCtrl.contato.postContatoRecaptcha); 
 
+//rotas para redefinir tipo salao quando for para produção
+router.get('/redefinirsalao', shopCtrl.propriedade.redefinirSalao);
+router.get('/mostrasalao', shopCtrl.propriedade.mostraSalao);
+router.get('/mostrarbairro', shopCtrl.propriedade.mostrarbairro);
+
 module.exports = router;

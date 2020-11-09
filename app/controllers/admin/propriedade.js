@@ -94,7 +94,10 @@ exports.getNewPropiedade = (req, res, next) => {
 //POST NEW PROPIEDADE
 exports.postNewPropiedade = (req, res, next) => {
     req.body.ativo = req.body.ativo == 'on' ? 'true' : 'false';
+
     req.body.vendido = req.body.vendido == 'on' ? 'true' : 'false';
+    req.body.alugado = req.body.alugado == 'on' ? 'true' : 'false';
+   
     req.body.destaque = req.body.destaque == 'on' ? 'true' : 'false';
     req.body.taxas = req.body.taxas == 'on' ? 'true' : 'false';
 
@@ -336,11 +339,15 @@ exports.getOutrasFotos = (req, res, next) => {
 
 //POST EDIT PROPIEDADE
 exports.postEditPropiedade = (req, res, next) => {
-    console.log('entrou no postedit')
+    console.log(req.body.alugado);
     req.body.ativo = req.body.ativo == 'on' ? 'true' : 'false';
     // req.body.ativovenda = req.body.ativovenda == 'on' ? 'true' : 'false';
     // req.body.ativoaluguel = req.body.ativoaluguel == 'on' ? 'true' : 'false';
     req.body.vendido = req.body.vendido == 'on' ? 'true' : 'false';
+    req.body.alugado = req.body.alugado == 'on' ? 'true' : 'false';
+
+    console.log(req.body.alugado + '-------');
+
     req.body.destaque = req.body.destaque == 'on' ? 'true' : 'false';
     req.body.taxas = req.body.taxas == 'on' ? 'true' : 'false';
 
@@ -360,12 +367,8 @@ exports.postEditPropiedade = (req, res, next) => {
                 return next(new Error('Houve um erro e a sua propiedade não foi encontrada, volte e tente novamente.'));
             }
 
-            console.log(prop.obsrapidas);
-            console.log(req.body.obsrapidas);
-
             prop.obsrapidas = req.body.obsrapidas
-
-            console.log('depois:', prop.obsrapidas);
+            prop.alugado = req.body.alugado;
 
             if (req.file) {
                 if (prop.mainImage) {
@@ -387,6 +390,9 @@ exports.postEditPropiedade = (req, res, next) => {
                                 // prop.ativoaluguel = req.body.ativoaluguel;
                                 // prop.ativovenda = req.body.ativovenda;
                                 prop.vendido = req.body.vendido;
+                                prop.alugado = req.body.alugado;
+                             
+
                                 prop.destaque = req.body.destaque;
                                 prop.titulo = req.body.titulo;
                                 prop.descricao = req.body.descricao;
@@ -401,6 +407,7 @@ exports.postEditPropiedade = (req, res, next) => {
                                 prop.extensao = req.body.extensao;
                                 prop.area = req.body.area;
                                 prop.municipio = req.body.municipio;
+
                                 if (prop.municipio === 'Bagé') {
                                     prop.localidade = req.body.localidade;
                                 } else {
@@ -434,9 +441,6 @@ exports.postEditPropiedade = (req, res, next) => {
                                 prop.acudes = req.body.acudes;
 
                                 prop.youtube_id = req.body.youtube_id;
-
-                                
-
 
                                 prop.save();
                                 return res.redirect('/admin/propiedades');

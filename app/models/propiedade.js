@@ -29,6 +29,12 @@ const Propiedade = new Schema({
         default: false,
     },
 
+    alugado: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+
     descricao: {
         type: String,
         required: false,

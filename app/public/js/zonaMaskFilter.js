@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <option ${"Casa"==tipoSelecionado?"selected":""} value="Casa">Casa</option>
                                 <option ${"Apartamento"==tipoSelecionado?"selected":""} value="Apartamento">Apartamento</option>
                                 <option ${"Kitnet"==tipoSelecionado?"selected":""} value="Kitnet">Kitnet</option>   
-                                <option ${"Salão Comercial"==tipoSelecionado?"selected":""} value="Salão Comercial">Salão Comercial</option>
+                                <option ${"Salão Comercial"==tipoSelecionado?"selected":""} value="Salão Comercial">Prédio Comercial</option>
                                 <option ${"Escritório"==tipoSelecionado?"selected":""} value="Escritório">Escritório</option>
                                 <option ${"Terreno"==tipoSelecionado?"selected":""} value="Terreno">Terreno</option>
                                 <option ${"Chácara"==tipoSelecionado?"selected":""} value="Chácara">Chácara</option>

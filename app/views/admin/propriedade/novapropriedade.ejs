@@ -531,6 +531,16 @@
 											</div>
 										</div>
 
+										<div class="system_info">
+											<label>Alugado?</label>
+											<div class="radio_check">
+												<input <% if(form.values){ %>
+													<%= form.values.alugado == 'on' ? 'checked' : '' %> <% } %>
+													type="checkbox" id="alugado" name="alugado">
+												<label for="alugado"><span>Não</span><span>Sim</span></label>
+											</div>
+										</div>
+
 										<div class="col-md-12 col-sm-12 ">
 											<input name="youtube_id" type="text" placeholder="Link do Youtube"
 												class="form-control"
