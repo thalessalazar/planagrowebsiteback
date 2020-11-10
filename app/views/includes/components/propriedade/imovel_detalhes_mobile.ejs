@@ -1,187 +1,202 @@
-		<!--JÁ PODE SER O DO MOBILE-->
-        <div class="imovel_listing wow fadeInUp d-lg-none">
-            <h4 class="inner-title">Detalhes da Propriedade</h4>
-            <div class="profile_data">
-                <ul>
-                    <li><span>Gênero :</span>
-                        <%= prop.genero %>
-                    </li>
-                    <li><span>Zona :</span>
-                        <%= prop.zona %>
-                    </li>
-                    <li><span>Tipo :</span>
-                        <%= prop.tipo %>
-                    </li>
+<!--JÁ PODE SER O DO MOBILE-->
+<div class="imovel_listing wow fadeInUp d-lg-none">
+    <h4 class="inner-title">Detalhes da Propriedade</h4>
+    <div class="profile_data">
+        <ul>
+            <li><span>Gênero :</span>
+                <%= prop.genero %>
+            </li>
+            <li><span>Zona :</span>
+                <%= prop.zona %>
+            </li>
+            <li><span>Tipo :</span>
+                <%= prop.tipo %>
+            </li>
 
-                    <% if(prop.zona == 'Urbana') { %>
+            <% if(prop.zona == 'Urbana') { %>
 
-                    <% if( prop.dormitorios) { %>
-                    <li><span>Dormitórios :</span>
-                        <%= prop.dormitorios %>
-                    </li>
-                    <% } %>
+            <% if( prop.dormitorios) { %>
+            <li><span>Dormitórios :</span>
+                <%= prop.dormitorios %>
+            </li>
+            <% } %>
 
-                    <% if( prop.banheiros) { %>
-                    <li><span>Banheiros :</span>
-                        <%= prop.banheiros %>
-                    </li>
-                    <% } %>
+            <% if( prop.banheiros) { %>
+            <li><span>Banheiros :</span>
+                <%= prop.banheiros %>
+            </li>
+            <% } %>
 
-                    <% if( prop.suites) { %>
-                    <li><span>Suites :</span>
-                        <%= prop.suites %>
-                    </li>
-                    <% } %>
+            <% if( prop.suites) { %>
+            <li><span>Suites :</span>
+                <%= prop.suites %>
+            </li>
+            <% } %>
 
-                    <% if( prop.cozinhas) { %>
-                    <li><span>Cozinhas :</span>
-                        <%= prop.cozinhas %>
-                    </li>
-                    <% } %>
+            <% if( prop.cozinhas) { %>
+            <li><span>Cozinhas :</span>
+                <%= prop.cozinhas %>
+            </li>
+            <% } %>
 
-                    <% if( prop.patio ) { %>
-                    <li><span>Pátio :</span>
-                        <%= prop.patio ? 'Sim' : 'Não' %>
-                    </li>
-                    <% } %>
+            <% if( prop.patio ) { %>
+            <li><span>Pátio :</span>
+                <%= prop.patio ? 'Sim' : 'Não' %>
+            </li>
+            <% } %>
 
-                    <% if(prop.piscina) { %>
-                    <li><span>Piscina :</span>
-                        <%= prop.piscina ? 'Sim' : 'Não' %>
-                    </li>
-                    <% } %>
+            <% if(prop.piscina) { %>
+            <li><span>Piscina :</span>
+                <%= prop.piscina ? 'Sim' : 'Não' %>
+            </li>
+            <% } %>
 
-                    <% if(prop.mobiliado) { %>
-                    <li><span>Mobiliado :</span>
-                        <%= prop.mobiliado ? 'Sim' : 'Não' %>
-                    </li>
-                    <% } %>
-                    <% } else{ %>
-                    <% if( prop.municipio ) { %>
-                    <li><span>Município :</span>
-                        <%= prop.municipio %>
-                    </li>
-                    <% } %>
-                    <% if( prop.acudes ) { %>
-                    <li><span>Açudes :</span>
-                        <%= prop.acudes %>
-                    </li>
-                    <% } %>
+            <% if(prop.mobiliado) { %>
+            <li><span>Mobiliado :</span>
+                <%= prop.mobiliado ? 'Sim' : 'Não' %>
+            </li>
+            <% } %>
+            <% } else{ %>
+            <% if( prop.municipio ) { %>
+            <li><span>Município :</span>
+                <%= prop.municipio %>
+            </li>
+            <% } %>
+            <% if( prop.acudes ) { %>
+            <li><span>Açudes :</span>
+                <%= prop.acudes %>
+            </li>
+            <% } %>
 
-                    <% if( prop.galpoes ) { %>
-                    <li><span>Galpões :</span>
-                        <%= prop.galpoes %>
-                    </li>
-                    <% } %>
+            <% if( prop.galpoes ) { %>
+            <li><span>Galpões :</span>
+                <%= prop.galpoes %>
+            </li>
+            <% } %>
 
-                    <% if( prop.mangueiras ) { %>
-                    <li><span>Mangueiras :</span>
-                        <%= prop.mangueiras %>
-                    </li>
-                    <% } %>
+            <% if( prop.mangueiras ) { %>
+            <li><span>Mangueiras :</span>
+                <%= prop.mangueiras %>
+            </li>
+            <% } %>
 
-                    <% } %>
-                </ul>
-            </div>
-        </div>
-
-        <div class="imovel_listing wow fadeInUp sidebar-widget d-lg-none ">
-
-            <% if(prop.zona == 'Urbana') {%>
-                <% if( prop.genero == 'Ambos') { %>
-                        <div class="bed_area_details">
-                            <ul> 
-                                <li class="imovel-price_details">
-                                    Aluguel:
-                                    <i class="fa dollar-sign"></i> 
-                                    <% if(prop.precoaluguel != 0) { %>
-                                        </i> R$ <span class="tomoney"><%=prop.precoaluguel%></span> <span class="imovel-price-cents">,00 <%= prop.taxas ? '+ Taxas' : '' %></span>
-                                    <% } else { %>
-                                        </i> <span class="imovel-price-cents">Confira conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="bed_area_details">
-                            <ul>
-                                <li class="imovel-price_details" style="background: #99be3e;">
-                                    Venda:
-                                    <i class="fa dollar-sign"></i>
-                                    <% if(prop.procovenda != 0){ %>
-                                        R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00</span>
-                                    <% } else { %>
-                                        <span class="imovel-price-cents">Confira Conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                    <% } %>
-                    
-                    <% if(prop.genero == 'Venda') {%>
-                        <div class="bed_area_details">
-                            <ul>
-                                <li class="imovel-price_details">
-                                    Venda:
-                                    <i class="fa dollar-sign"></i>
-                                    <% if( prop.procovenda != 0 ) { %>
-                                        R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00</span>
-                                    <% } else { %>
-                                        <span class="imovel-price-cents">Confira Conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                    <% } %>
-                    
-                    <% if(prop.genero == 'Aluguel') {%>
-                        <div class="bed_area_details">
-                            <ul> 
-                                <li class="imovel-price_details">
-                                    Aluguel:
-                                    <i class="fa dollar-sign"></i> 
-                                    <% if(prop.precoaluguel != 0) { %>
-                                        </i> R$ <span class="tomoney"><%=prop.precoaluguel%></span> <span class="imovel-price-cents">,00 <%= prop.taxas ? '+ Taxas' : '' %></span>
-                                    <% } else { %>
-                                        </i> <span class="imovel-price-cents">Confira conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                    <% } %>
-                <% } else {%>
-                    <% if (prop.precoHec) { %>
-                        <div class="bed_area_details">
-                            <ul> 
-                                <li class="imovel-price_details">
-                                    Preço/Hec:
-                                    <i class="fa dollar-sign"></i> 
-                                    <% if(prop.precoHec != 0) { %>
-                                        </i> R$ <span class="tomoney"><%=prop.precoHec%></span> <span class="imovel-price-cents">,00 </span>
-                                    <% } else { %>
-                                        </i> <span class="imovel-price-cents">Confira conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                        <% } %>
-            
-                        <% if (prop.precoVenda) { %>
-                        <div class="bed_area_details">
-                            <ul> 
-                                <li class="imovel-price_details" style="background: #99be3e;">
-                                    Venda:
-                                    <i class="fa dollar-sign"></i> 
-                                    <% if(prop.precoVenda != 0) { %>
-                                        </i> R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00 </span>
-                                    <% } else { %>
-                                        </i> <span class="">Confira conosco!</span>
-                                    <% } %>
-                                </li>
-                            </ul>
-                        </div>
-                        <% } %>
+            <% if( prop.finalidade ) { %>
+            <li><span> Finalidade:</span>
+                <% if(prop.finalidade == 'Ambos'){ %>
+                    Pecuária e Lavoura
                 <% } %>
-            <!--
+                <% if(prop.finalidade == 'Pecuária'){ %>
+                    Pecuária
+                <% } %>
+                <% if(prop.finalidade == 'Lavoura'){ %>
+                    Lavoura
+                <% } %>
+            </li>
+            <% } %>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<div class="imovel_listing wow fadeInUp sidebar-widget d-lg-none ">
+
+    <% if(prop.zona == 'Urbana') {%>
+    <% if( prop.genero == 'Ambos') { %>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details">
+                Aluguel:
+                <i class="fa dollar-sign"></i>
+                <% if(prop.precoaluguel != 0) { %>
+                </i> R$ <span class="tomoney"><%=prop.precoaluguel%></span> <span class="imovel-price-cents">,00
+                    <%= prop.taxas ? '+ Taxas' : '' %></span>
+                <% } else { %>
+                </i> <span class="imovel-price-cents">Confira conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details" style="background: #99be3e;">
+                Venda:
+                <i class="fa dollar-sign"></i>
+                <% if(prop.procovenda != 0){ %>
+                R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00</span>
+                <% } else { %>
+                <span class="imovel-price-cents">Confira Conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if(prop.genero == 'Venda') {%>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details">
+                Venda:
+                <i class="fa dollar-sign"></i>
+                <% if( prop.procovenda != 0 ) { %>
+                R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00</span>
+                <% } else { %>
+                <span class="imovel-price-cents">Confira Conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if(prop.genero == 'Aluguel') {%>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details">
+                Aluguel:
+                <i class="fa dollar-sign"></i>
+                <% if(prop.precoaluguel != 0) { %>
+                </i> R$ <span class="tomoney"><%=prop.precoaluguel%></span> <span class="imovel-price-cents">,00
+                    <%= prop.taxas ? '+ Taxas' : '' %></span>
+                <% } else { %>
+                </i> <span class="imovel-price-cents">Confira conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+    <% } else {%>
+    <% if (prop.precoHec) { %>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details">
+                Preço/Hec:
+                <i class="fa dollar-sign"></i>
+                <% if(prop.precoHec != 0) { %>
+                </i> R$ <span class="tomoney"><%=prop.precoHec%></span> <span class="imovel-price-cents">,00 </span>
+                <% } else { %>
+                </i> <span class="imovel-price-cents">Confira conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+
+    <% if (prop.precoVenda) { %>
+    <div class="bed_area_details">
+        <ul>
+            <li class="imovel-price_details" style="background: #99be3e;">
+                Venda:
+                <i class="fa dollar-sign"></i>
+                <% if(prop.precoVenda != 0) { %>
+                </i> R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00 </span>
+                <% } else { %>
+                </i> <span class="">Confira conosco!</span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <% } %>
+    <% } %>
+    <!--
                
             <div class="bed_area_details">
                 <ul>
@@ -194,6 +209,5 @@
             </div>
              
             -->
-            
-        </div>
-        
+
+</div>

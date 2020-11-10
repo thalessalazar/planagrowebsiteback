@@ -80,6 +80,19 @@
             </li>
             <% } %>
 
+            <% if( prop.finalidade ) { %>
+                <li><span> Finalidade:</span>
+                    <% if(prop.finalidade == 'Ambos'){ %>
+                        Pecuária e Lavoura
+                    <% } %>
+                    <% if(prop.finalidade == 'Pecuária'){ %>
+                        Pecuária
+                    <% } %>
+                    <% if(prop.finalidade == 'Lavoura'){ %>
+                        Lavoura
+                    <% } %>
+                </li>
+                <% } %>
             <% } %>
         </ul>
     </div>
