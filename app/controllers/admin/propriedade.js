@@ -290,6 +290,7 @@ exports.getEditPropiedade = (req, res, next) => {
     })
         .populate('proprietarioId')
         .then(prop => {
+            console.log(prop.finalidade);
             if (!prop) {
                 return res.redirect('/admin/propiedades')
             }
@@ -339,14 +340,12 @@ exports.getOutrasFotos = (req, res, next) => {
 
 //POST EDIT PROPIEDADE
 exports.postEditPropiedade = (req, res, next) => {
-    console.log(req.body.alugado);
+    console.log(req.body.finalidade);
     req.body.ativo = req.body.ativo == 'on' ? 'true' : 'false';
     // req.body.ativovenda = req.body.ativovenda == 'on' ? 'true' : 'false';
     // req.body.ativoaluguel = req.body.ativoaluguel == 'on' ? 'true' : 'false';
     req.body.vendido = req.body.vendido == 'on' ? 'true' : 'false';
     req.body.alugado = req.body.alugado == 'on' ? 'true' : 'false';
-
-    console.log(req.body.alugado + '-------');
 
     req.body.destaque = req.body.destaque == 'on' ? 'true' : 'false';
     req.body.taxas = req.body.taxas == 'on' ? 'true' : 'false';
@@ -369,6 +368,7 @@ exports.postEditPropiedade = (req, res, next) => {
 
             prop.obsrapidas = req.body.obsrapidas
             prop.alugado = req.body.alugado;
+            prop.finalidade = req.body.finalidade;
 
             if (req.file) {
                 if (prop.mainImage) {
@@ -392,7 +392,6 @@ exports.postEditPropiedade = (req, res, next) => {
                                 prop.vendido = req.body.vendido;
                                 prop.alugado = req.body.alugado;
                              
-
                                 prop.destaque = req.body.destaque;
                                 prop.titulo = req.body.titulo;
                                 prop.descricao = req.body.descricao;

@@ -126,8 +126,8 @@ exports.getComprar = (req, res, next) => {
                         props = props.sort((x, y) => {
                             return (x.destaque === y.destaque) ? 0 : x ? -1 : 1
                         })
-                    }
-                    
+                    }                    
+
                     Sobre.findOne()
                         .then(sobre => {
                             Banner.find({ referente: 'propriedade-banner' }).then(banner => {

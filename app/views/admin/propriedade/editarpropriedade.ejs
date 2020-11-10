@@ -224,6 +224,16 @@
 												opção.</small>
 										</div>
 
+										<div class="rural-form col-md-6 col-sm-4 hidden">
+											<label for="finalidade"> Finalidade</label>
+											<select name="finalidade" class="selectpicker form-control" id="finalidade">
+												<option  >Finalidade</option>
+												<option <%= prop.finalidade == 'Pecuária' ? 'selected' : '' %> value="Pecuária"> Pecuária</option>
+												<option <%= prop.finalidade == 'Lavoura' ? 'selected' : '' %> value="Lavoura"> Lavoura</option>
+												<option <%= prop.finalidade == 'Ambos' ? 'selected' : '' %> value="Ambos"> Ambos</option>
+											</select>
+										</div>
+
 									</div>
 								</div>
 								<div class="description">

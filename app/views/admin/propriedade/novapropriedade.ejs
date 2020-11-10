@@ -63,7 +63,7 @@
 												value="<%= form.values ? form.values.titulo : null %>">
 										</div>
 
-									
+
 										<!-- RICH TEXT EDITOR DESCRICAO DE IMÓVEIS -->
 										<div class="col-md-12 col-sm-12">
 
@@ -138,7 +138,7 @@
 												class="form-control"
 												value="<%= form.values ? form.values.obsrapidas : null %>">
 										</div>
-									
+
 
 
 										<div class="col-md-6 col-sm-6">
@@ -230,6 +230,23 @@
 											<small class="rural-form hidden">Coloque o valor 0 se não desejar esta
 												opção.</small>
 										</div>
+
+										<div class="rural-form col-md-6 col-sm-4 hidden">
+											<label for="finalidade"> Finalidade</label>
+											<select name="finalidade" class="selectpicker form-control" id="finalidade">
+												<option disabled selected>Finalidade</option>
+												<option <% if(form.values){ %>
+													<%= form.values.finalidade == 'Pecuária' ? 'selected' : ''%> <% } %>
+													value="Pecuária">Pecuária</option>
+												<option <% if(form.values){ %>
+													<%= form.values.finalidade == 'Lavoura' ? 'selected' : ''%> <% } %>
+													value="Lavoura">Lavoura</option>
+												<option <% if(form.values){ %>
+													<%= form.values.finalidade == 'Ambos' ? 'selected' : ''%> <% } %>
+													value="Ambos">Ambos</option>
+											</select>
+										</div>
+										
 									</div>
 								</div>
 								<div class="description">
@@ -375,12 +392,13 @@
 											<div class="col-md-12 col-sm-12 ">
 												<div class="row">
 													<div class="col-md-4 col-sm-6">
-														<input type="text" maxLength="9" name="cep" placeholder="CEP" id="cep"
-															class="form-control" onblur="pesquisacep(this.value)">
+														<input type="text" maxLength="9" name="cep" placeholder="CEP"
+															id="cep" class="form-control"
+															onblur="pesquisacep(this.value)">
 													</div>
 													<div class="col-md-4 col-sm-6">
-														<input type="text" name="bairro" placeholder="Bairro" id="bairro"
-															class="form-control"
+														<input type="text" name="bairro" placeholder="Bairro"
+															id="bairro" class="form-control"
 															value="<%= form.values ? form.values.bairro : null %>">
 													</div>
 													<div class="col-md-4 col-sm-4">
@@ -577,7 +595,7 @@
 <!-- SCRIPT VANTAGENS -->
 <script>
 
-	
+
 	editorDescricao.document.designMode = "On";
 	editorObservacoes.document.designMode = "On";
 
@@ -679,9 +697,9 @@
 	}
 
 	function meu_callback(conteudo) {
-		if(!("erro" in conteudo)) {
-			document.getElementById('rua').value=(conteudo.logradouro);
-			document.getElementById('bairro').value=(conteudo.bairro);
+		if (!("erro" in conteudo)) {
+			document.getElementById('rua').value = (conteudo.logradouro);
+			document.getElementById('bairro').value = (conteudo.bairro);
 		}
 	}
 

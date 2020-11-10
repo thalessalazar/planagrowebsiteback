@@ -263,6 +263,9 @@ const Propiedade = new Schema({
     obsrapidas: {
         type: String,
         required: false
+    },
+    finalidade: {
+        type: String
     }
 });
 
