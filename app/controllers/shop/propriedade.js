@@ -173,7 +173,7 @@ exports.getPropiedade = (req, res, next) => {
         codigo: propCod
     })
         .then(prop => {
-
+            console.log(prop);
             if (!prop) {
                 return res.redirect('/comprar');
             }

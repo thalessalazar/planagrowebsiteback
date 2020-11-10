@@ -62,18 +62,6 @@
             </li>
             <% } %>
 
-            <% if(prop.preco) { %>
-            <li><span>Preço :</span> R$<span class="tomoney">
-                    <%= prop.preco %></span></li>
-            <% } %>
-            <% if(prop.precoHec) { %>
-            <li><span>Preço/hec:</span>
-                R$<span class="tomoney"><%= prop.precoHec %></span></li>
-            <% }else{ %>
-            <li><span>Preço/hec:</span>
-                <span>Confira!</span></li>
-            <% } %>
-
             <% if( prop.acudes ) { %>
             <li><span>Açudes :</span>
                 <%= prop.acudes %>
@@ -159,7 +147,9 @@
                     </ul>
                 </div>
             <% } %>
-        <% } else {%>
+        <% } else { %>
+
+            <% if (prop.precoHec) { %>
             <div class="bed_area_details">
                 <ul> 
                     <li class="imovel-price_details">
@@ -173,6 +163,9 @@
                     </li>
                 </ul>
             </div>
+            <% } %>
+
+            <% if (prop.precoVenda) { %>
             <div class="bed_area_details">
                 <ul> 
                     <li class="imovel-price_details" style="background: #99be3e;">
@@ -181,11 +174,12 @@
                         <% if(prop.precoVenda != 0) { %>
                             </i> R$ <span class="tomoney"><%=prop.precovenda%></span> <span class="imovel-price-cents">,00 </span>
                         <% } else { %>
-                            </i> <span class="imovel-price-cents">Confira conosco!</span>
+                            </i> <span class="">Confira conosco!</span>
                         <% } %>
                     </li>
                 </ul>
             </div>
+            <% } %>
         <% } %>
     <!--
        
