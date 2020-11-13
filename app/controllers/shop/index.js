@@ -12,10 +12,10 @@ exports.getIndex = (req, res, next) => {
             })
                 .sort({ vendido: 1, alugado: 1 ,date: -1 })
                 .then(props => {
-                    Depoimento.find()
+                    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairroBage => {
+                        Depoimento.find()
                         .then(deps => {
                             Banner.find({ referente: 'home' }).then(banner => {
-                              
                                 res.render('shop/home', {
                                     pageTitle: "Início",
                                     path: "/",
@@ -25,6 +25,7 @@ exports.getIndex = (req, res, next) => {
                                     robotsFollow: true,
                                     contact: true,
                                     genero: 'Ambos',
+                                    bairroBage: bairroBage,
                                     banner: banner,
                                     csrfToken: req.csrfToken()
                                 });
@@ -32,6 +33,8 @@ exports.getIndex = (req, res, next) => {
                                 .catch(err => next(err));
                         })
                         .catch(err => next(err));
+                    })
+                    .catch(err => next(err));
                 })
                 .catch(err => next(err));
         })

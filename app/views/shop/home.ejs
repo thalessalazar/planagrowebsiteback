@@ -5,7 +5,7 @@
         <%- include('../includes/imports/head') %>
     </head>
 
-    <body class="pagewrap wow fadeIn">
+    <body class="pagewrap wow fadeIn" onload="bairroDefault()">
         <%- include('../includes/components/nav') %>
 
         <!-- Slider Part Start -->
@@ -63,36 +63,53 @@
     
                                     <div class="row">
                                         <div class="col-md-2 col-sm-6 urbano-form">
-                                            <select name="tipo" id="" class="selectpicker form-control">
+                                            <select name="tipo" id="" data-size="4" class="selectpicker form-control">
                                                 <option selected disabled>Tipo</option>
                                                 <option value="">Todos</option>
                                                 <option value="Casa">Casa</option>
                                                 <option value="Apartamento">Apartamento</option>
                                                 <option value="Kitnet">Kitnet</option>
-                                                <option value="Salão Comecial">Salão Comercial</option>
+                                                <option value="Prédio Comercial">Prédio Comercial</option>
                                                 <option value="Escritório">Escritório</option>
                                                 <option value="Terreno">Terreno</option>
                                                 <option value="Chácara">Chácara</option>
                                             </select>
                                         </div>
     
-                                        <div class="col-md-2 col-sm-3 urbano-form">
-                                            <select name="cidade" class="selectpicker form-control">
+                                        <div class="col-md-2 col-sm-3 urbano-form" >
+                                            <select name="cidade" data-size="4" id="cidade" class="selectpicker form-control" onchange="definiBairro()" >
                                                 <option disabled selected>Cidade</option>
                                                 <option value="Bagé">Bagé</option>
-                                                <option value="Aceguá">Aceguá</option>
-                                                <option value="Candiota">Candiota</option>
-                                                <option value="Dom Pedrito">Dom Pedrito</option>
-                                                <option value="Hulha Negra">Hulha Negra</option>
-                                                <option value="Cassino">Cassino</option>
-                                                <option value="Pelotas">Pelotas</option>
                                                 <option value="Outros">Outros</option>
                                             </select>
                                         </div>
-    
-                                        <div class="col-md-2 col-sm-2">
-                                                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
+
+                                        <div class="col-md-2 col-sm-3 urbano-form" id="bairro-default">
+                                            <select name="bairro" data-size="4" class="selectpicker form-control">
+                                                <option disabled selected value="" >Bairro</option>
+                                                <option disabled value="">Selecione uma cidade</option>
+                                            </select>
                                         </div>
+
+                                         <div class="col-md-2 col-sm-3 urbano-form hidden d-none" id="bairro-outros">
+                                            <select name="bairro_outros" data-size="4" class="selectpicker form-control">
+                                                <option disabled selected>Bairro</option>
+                                                <option value="">Outros</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-2 col-sm-3 urbano-form d-none" id="bairro-bage">
+                                            <select name="bairro_bage" data-size="4" class="selectpicker form-control">
+                                                <option disabled selected>Bairro</option>
+                                                <% for(bairro of bairroBage) {%>
+                                                    <option value="<%= bairro %>"> <%= bairro %> </option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+
+                                        <!-- <div class="col-md-2 col-sm-2">
+                                                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
+                                        </div> -->
     
                                         <div class="col-md-2 col-sm-6 urbano-form">
                                             <select name="dormitorios" class="selectpicker form-control">
@@ -124,8 +141,6 @@
                                                 </optgroup>
                                             </select>
                                         </div>
-    
-    
     
     
                                         <!-- <div class="col-md-3 col-sm-6 urbano-form">
@@ -176,6 +191,7 @@
     
                                                 </select>
                                             </div> -->
+
                                         <div class="col-md-2 col-sm-6">
                                             <input type="submit" name="search" value="Pesquisar" class="btn btn-default">
                                         </div>
@@ -237,7 +253,6 @@
 										<li class="filter" data-role="button" data-filter=".sitio">Sítio</li>
 										<li class="filter" data-role="button" data-filter=".terreno">Terreno</li>
 									</ul>
-
 								</ul>
 							</div> -->
                                 <!--Filter List-->
@@ -315,9 +330,23 @@
             });
     </script>
     <script>
+
+    //é chamado quando cidade é chamado
+    function definiBairro(){
+            var selectCidade = document.getElementById('cidade').value;
+            if(selectCidade == 'Bagé') {
+                $('#bairro-default').addClass('d-none');
+                $('#bairro-outros').addClass('d-none');
+                $('#bairro-bage').removeClass('d-none');
+            } else { // se for outros
+                $('#bairro-default').addClass('d-none');
+                $('#bairro-bage').addClass('d-none');
+                $('#bairro-outros').removeClass('d-none');
+            }
+        }
+    
         document
             .addEventListener("DOMContentLoaded", function () {
-
                 $('#faixaHec')
                     .change(function () {
                         $('#extensaomax').val($(this).children("option:selected").attr('data-max'));

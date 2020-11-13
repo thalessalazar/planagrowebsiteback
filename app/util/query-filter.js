@@ -73,12 +73,12 @@ module.exports = (req) => {
                 }
             },
 
-            {
-                'bairro': {
-                    $regex: req.query.keyword,
-                    $options: 'i'
-                }
-            },
+            // {
+            //     'bairro': {
+            //         $regex: req.query.keyword,
+            //         $options: 'i'
+            //     }
+            // },
 
             {
                 'cep': {
@@ -118,12 +118,12 @@ module.exports = (req) => {
             }
         }
 
-        if (req.query.cidade && req.query.cidade != '') {
-            query.cidade = {
-                $regex: req.query.cidade,
-                $options: 'i'
-            }
-        }
+        // if (req.query.cidade && req.query.cidade != '') {
+        //     query.cidade = {
+        //         $regex: req.query.cidade,
+        //         $options: 'i'
+        //     }
+        // }
 
         if (req.query.rua && req.query.rua != '') {
             query.rua = {
@@ -132,12 +132,12 @@ module.exports = (req) => {
             }
         }
 
-        if (req.query.bairro && req.query.bairro != '') {
-            query.bairro = {
-                $regex: req.query.bairro,
-                $options: 'i'
-            }
-        }
+        // if (req.query.bairro && req.query.bairro != '') {
+        //     query.bairro = {
+        //         $regex: req.query.bairro,
+        //         $options: 'i'
+        //     }
+        // }
 
         if (req.query.dormitorios && req.query.dormitorios != '') {
             if (req.query.dormitorios < 4) {
@@ -147,6 +147,18 @@ module.exports = (req) => {
                 query.dormitorios = {
                     $gte: req.query.dormitorios
                 }
+            }
+        }
+
+        if (req.query.cidade && req.query.cidade != '') {
+            query.cidade = req.query.cidade;
+        }
+
+        if(query.cidade && query.cidade != '') {
+            if(query.cidade == 'Bagé') {
+                query.bairro = req.query.bairro_bage;
+            } else {
+                query.bairro = req.query.bairro_outros;
             }
         }
 

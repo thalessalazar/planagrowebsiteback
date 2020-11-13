@@ -93,7 +93,8 @@ exports.getComprar = (req, res, next) => {
         if (req.body.ordenador == 'bd' || req.query.ordenador == 'bd') { sort.banheiros = -1; }
     }
 
-
+    console.log(query);
+    
     //teste genero da busca para puxar o banner referente aquele genero
     //se não for aluguel ou venda ele busca o banner do genero ambos que já foi presetado
     var generoBanner = 'Ambos';
@@ -133,10 +134,9 @@ exports.getComprar = (req, res, next) => {
                             Banner.find({ referente: 'propriedade-banner' }).then(banner => {
                                 Banner.find(filter).then(bannerimoveis => {
                                     if (req.query == {} || req.body == {}) {
-                                        let prop = props.sort()
+                                        let prop = pclearps.sort()
                                     }
                                     Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairrosBage => {
-                                        console.log(bairrosBage);
                                         res.render('shop/comprar', {
                                             pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
                                             props: props,
@@ -166,14 +166,16 @@ exports.getComprar = (req, res, next) => {
                 .catch(err => next(err, 500));
         });
 }
-
+// <% for (bairro of bairroBage) { %>
+//     <option disabled class="bairro-bage" value="<%=bairro%>"><%=bairro%></option>
+// <% } %>
 exports.getPropiedade = (req, res, next) => {
     const propCod = req.params.propCod;
     Propiedade.findOne({
         codigo: propCod
     })
         .then(prop => {
-            console.log(prop);
+            console.log(prop);  
             if (!prop) {
                 return res.redirect('/comprar');
             }
