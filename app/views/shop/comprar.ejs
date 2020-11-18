@@ -129,6 +129,19 @@
 
 <!-- Localidaeds Bagé hidden -->
 <script>
+	function definiBairro(){
+        var selectCidade = document.getElementById('cidade').value;
+        if(selectCidade == 'Bagé') {
+            $('#bairro-default').addClass('d-none');
+            $('#bairro-outros').addClass('d-none');
+            $('#bairro-bage').removeClass('d-none');
+        } else { // se for outros
+            $('#bairro-default').addClass('d-none');
+            $('#bairro-bage').addClass('d-none');
+            $('#bairro-outros').removeClass('d-none');
+        }
+    }
+
 	document.addEventListener("DOMContentLoaded", function () {
 
 		$('#selectMunicipio').change(function () {
@@ -142,7 +155,7 @@
 		});
 
 		$('#btnUrbano').click(function () {
-
+   
 			if (!$(this).hasClass('active')) {
 				$(this).addClass('active');
 				$(this).siblings().removeClass('active');

@@ -136,7 +136,7 @@ exports.getComprar = (req, res, next) => {
                                     if (req.query == {} || req.body == {}) {
                                         let prop = pclearps.sort()
                                     }
-                                    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairrosBage => {
+                                    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairroBage => {
                                         res.render('shop/comprar', {
                                             pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
                                             props: props,
@@ -149,7 +149,7 @@ exports.getComprar = (req, res, next) => {
                                             sobre: sobre,
                                             banner: banner,
                                             bannerimoveis: bannerimoveis,
-                                            bairrosBage: bairrosBage,
+                                            bairroBage: bairroBage,
                                             contact: true,
                                             form: req.query,
                                             genero: req.body.genero || req.query.genero

@@ -3,6 +3,14 @@
 
     <head>
         <%- include('../includes/imports/head') %>
+        <!--Plugin CSS file with desired skin-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+        
+        <!--jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <!--Plugin JavaScript file-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     </head>
 
     <body class="pagewrap wow fadeIn" onload="bairroDefault()">
@@ -36,47 +44,52 @@
                                                 Imóveis</a>
                                         </div>
     
-                                        <div class="col-md-3 col-6">
+                                        <div class="col-md-2 col-6">
                                             <input type="text" name="codigo" class="form-control" placeholder="Código">
                                         </div>
     
-                                        <div class="col-md-3 col-6">
+                                        <div class="col-md-4 col-6">
                                             <input type="text" name="keyword" class="form-control"
                                                 placeholder="Por palavra chave...">
                                         </div>
     
                                         <div class="col-md-3 col-sm-6">
-                                            <select name="zona" class="selectpicker form-control" title="Zona"
+                                            <select name="zona" class="selectpicker form-control" title="Zona Urbana ou Rural?"
                                                 id="selectZona">
-                                                <option selected value="Urbana">Zona Urbana</option>
+                                                <option value="Urbana">Zona Urbana</option>
                                                 <option value="Rural">Zona Rural</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 col-sm-6 urbano-form">
-                                            <select name="genero" class="selectpicker form-control" id="selectGenero">
+                                            <select name="genero" class="selectpicker form-control" title="Comprar ou Alugar?" id="selectGenero">
                                                 <option value="Venda">Quero comprar</option>
                                                 <option value="Aluguel">Quero alugar</option>
                                                 <option value="">Ambos</option>
                                             </select>
                                         </div>
+                                       
                                     </div>
     
                                     <div class="row">
-                                        <div class="col-md-2 col-sm-6 urbano-form">
+                                        <div class="col-md-3 col-sm-6 urbano-form">
                                             <select name="tipo" id="" data-size="4" class="selectpicker form-control">
-                                                <option selected disabled>Tipo</option>
+                                                <option selected disabled>Tipo de Imóvel</option>
                                                 <option value="">Todos</option>
                                                 <option value="Casa">Casa</option>
                                                 <option value="Apartamento">Apartamento</option>
                                                 <option value="Kitnet">Kitnet</option>
-                                                <option value="Prédio Comercial">Prédio Comercial</option>
+                                                <option value="Salão Comercial">Salão Comercial</option>
                                                 <option value="Escritório">Escritório</option>
                                                 <option value="Terreno">Terreno</option>
                                                 <option value="Chácara">Chácara</option>
                                             </select>
                                         </div>
-    
-                                        <div class="col-md-2 col-sm-3 urbano-form" >
+                                        
+                                        <div class="col-md-3 col-6 urbano-form">
+                                            <input type="text" name="cep" class="form-control" placeholder="CEP">
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-3 urbano-form" >
                                             <select name="cidade" data-size="4" id="cidade" class="selectpicker form-control" onchange="definiBairro()" >
                                                 <option disabled selected>Cidade</option>
                                                 <option value="Bagé">Bagé</option>
@@ -84,54 +97,36 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-2 col-sm-3 urbano-form" id="bairro-default">
+                                        <div class="col-md-3 col-sm-3 urbano-form" id="bairro-default">
                                             <select name="bairro" data-size="4" class="selectpicker form-control">
                                                 <option disabled selected value="" >Bairro</option>
                                                 <option disabled value="">Selecione uma cidade</option>
                                             </select>
                                         </div>
 
-                                         <div class="col-md-2 col-sm-3 urbano-form hidden d-none" id="bairro-outros">
+                                         <div class="col-md-3 col-sm-3 urbano-form hidden d-none" id="bairro-outros">
                                             <select name="bairro_outros" data-size="4" class="selectpicker form-control">
                                                 <option disabled selected>Bairro</option>
                                                 <option value="">Outros</option>
                                             </select>
                                         </div>
 
-                                        <div class="col-md-2 col-sm-3 urbano-form d-none" id="bairro-bage">
-                                            <select name="bairro_bage" data-size="4" class="selectpicker form-control">
-                                                <option disabled selected>Bairro</option>
+                                        <div class="col-md-3 col-sm-3 urbano-form d-none" id="bairro-bage">
+                                            <select name="bairro_bage" data-size="5" class="selectpicker form-control"
+												data-live-search="true" title="Bairro">
                                                 <% for(bairro of bairroBage) {%>
                                                     <option value="<%= bairro %>"> <%= bairro %> </option>
                                                 <% } %>
-                                            </select>
+											</select>
                                         </div>
+
+                                       
 
                                         <!-- <div class="col-md-2 col-sm-2">
                                                 <input type="text" class="form-control" name="bairro" placeholder="Bairro">
                                         </div> -->
     
-                                        <div class="col-md-2 col-sm-6 urbano-form">
-                                            <select name="dormitorios" class="selectpicker form-control">
-                                                <option disabled selected>Dormitórios</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4+</option>
-                                            </select>
-                                        </div>
-    
-                                        <div class="col-md-2 col-sm-6 urbano-form">
-                                            <select name="dormitorios" class="selectpicker form-control">
-                                                <option disabled selected>Banheiros</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4+</option>
-                                            </select>
-                                        </div>
-    
-    
+                                  
                                         <div class="col-md-3 col-sm-6  hidden rural-form">
                                             <select name="tipo" class="selectpicker form-control" id="selectTipo">
                                                 <option disabled selected label="Zona não selecionada">Tipo de Propriedade
@@ -191,11 +186,43 @@
     
                                                 </select>
                                             </div> -->
+                                       
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-6 urbano-form">
+                                            <select name="dormitorios" class="selectpicker form-control">
+                                                <option disabled selected>Dormitórios</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4+</option>
+                                            </select>
+                                        </div>
+    
+                                        <div class="col-md-2 col-sm-6 urbano-form">
+                                            <select name="dormitorios" class="selectpicker form-control">
+                                                <option disabled selected>Banheiros</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4+</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-3 col-6 urbano-form">
+                                            <input type="text" name="valmin" class="form-control" placeholder="Valor mín">
+                                        </div>
+
+                                        <div class="col-md-3 col-6 urbano-form">
+                                            <input type="text" name="valmax" class="form-control" placeholder="Valor máx">
+                                        </div>
 
                                         <div class="col-md-2 col-sm-6">
                                             <input type="submit" name="search" value="Pesquisar" class="btn btn-default">
                                         </div>
+
                                     </div>
+                               
                                 </form>
                             </div>
                             <div class="advance-page">
@@ -214,9 +241,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="title-row">
-                            <h3 class="section_title_blue wow fadeInUp">IMÓVEIS
-                                <span>EM DESTAQUE</span>
-                            </h3>
+                            <h3 class="section_title_blue wow fadeInUp">IMÓVEIS <span>EM DESTAQUE</span> </h3>
                             <small class="warning-light wow fadeInUp">
                                <i class="fa fa-info-circle mr-2"></i>   Algumas informações podem estar temporariamente desatualizadas, devido a
                                 modificações sem aviso prévio à imobiliária. Os valores exibidos poderão ter
@@ -367,6 +392,8 @@
                 $('.adv-modal').addClass('show');
                 $('.adv-modal-backdrop').addClass('show');
             });
+
+            $(".js-range-slider").ionRangeSlider({skin:"round"});
     </script>
 
 </html>

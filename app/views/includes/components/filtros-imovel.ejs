@@ -32,7 +32,7 @@
                                         value="<%= form.codigo ? form.codigo : ''%>">
                                 </div>
 
-                               
+
                                 <div class="col-md-2 col-sm-3">
                                     <input name="cep" type="text" placeholder="CEP" class="form-control"
                                         value="<%= form.cep ? form.cep : ''%>">
@@ -40,26 +40,44 @@
 
                                 <!-- <div class="col-md-2 col-sm-3">
                                     <input name="cidade" type="text" placeholder="Cidade" class="form-control"
-                                        value="<%= form.cidade ? form.cidade : ''%>">
+                                        value="<%= //form.cidade ? form.cidade : ''%>">
                                 </div> -->
 
-                                <div class="col-md-2 col-sm-3">
-                                    <select name="cidade" class="selectpicker form-control">
+
+                                <div class="col-md-2 col-sm-3 urbano-form">
+                                    <select name="cidade" data-size="4" id="cidade" class="selectpicker form-control" onchange="definiBairro()">
                                         <option disabled selected>Cidade</option>
-                                        <% for (var x = 0 ; x < bairrosBage.length ; x++) {%>
-                                        <option value="<%=bairrosBage[x]%>"><%=bairrosBage[x]%></option>
+                                        <option value="Bagé">Bagé</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 urbano-form" id="bairro-default">
+                                    <select name="bairro" data-size="4" class="selectpicker form-control">
+                                        <option disabled selected value="">Bairro</option>
+                                        <option disabled value="">Selecione uma cidade</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 urbano-form d-none" id="bairro-outros">
+                                    <select name="bairro_outros" data-size="4" class="selectpicker form-control">
+                                        <option disabled selected>Bairro</option>
+                                        <option value="">Outros</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 urbano-form d-none" id="bairro-bage">
+                                    <select name="bairro_bage" data-size="4" class="selectpicker form-control">
+                                        <option disabled selected>Bairro</option>
+                                        <% for(bairro of bairroBage) {%>
+                                        <option value="<%= bairro %>"> <%= bairro %> </option>
                                         <% } %>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-3">
-                                    <select name="bairro" class="selectpicker form-control">
-                                        <option disabled selected>Bairro</option>
-                                        <% for (var x = 0 ; x < bairrosBage.length ; x++) {%>
-                                        <option value="<%=bairrosBage[x]%>"><%=bairrosBage[x]%></option>
-                                        <% } %>
-                                    </select>
-                                </div>
+
+
+                         
 
                                 <div class="col-md-3 col-sm-6">
                                     <input name="rua" type="text" placeholder="Rua" class="form-control"
@@ -68,12 +86,12 @@
 
                                 <!-- <div class="col-md-2 col-sm-4">
                                     <input name="bairro" type="text" placeholder="Bairro" class="form-control"
-                                        value="<%= form.bairro ? form.bairro : ''%>">
+                                        value="<%=// form.bairro ? form.bairro : ''%>">
                                 </div> -->
 
-                           
+
                                 <div class="col-md-3 col-sm-6">
-                                    <select name="tipo" class="selectpicker form-control">
+                                    <select name="tipo" data-size="4" class="selectpicker form-control">
                                         <option selected disabled>Tipo</option>
                                         <option value="">Todos</option>
                                         <option <% if(form.tipo ) { %> <%= form.tipo == 'Casa' ? 'selected' : ''%>
@@ -84,8 +102,8 @@
                                         <option <% if(form.tipo ) { %> <%= form.tipo == 'Kitnet' ? 'selected' : ''%>
                                             <% }%> value="Kitnet">Kitnet</option>
                                         <option <% if(form.tipo ) { %>
-                                            <%= form.tipo == 'Prédio Comercial' ? 'selected' : ''%> <% }%>
-                                            value="Salão Comercial">Prédio Comercial</option>
+                                            <%= form.tipo == 'Salão Comercial' ? 'selected' : ''%> <% }%>
+                                            value="Salão Comercial">Salão Comercial</option>
                                         <option <% if(form.tipo ) { %> <%= form.tipo == 'Escritório' ? 'selected' : ''%>
                                             <% }%> value="Escritório">Escritório</option>
                                         <option <% if(form.tipo ) { %> <%= form.tipo == 'Terreno' ? 'selected' : ''%>
@@ -97,7 +115,7 @@
                                 </div>
 
                                 <div class="col-md-3 col-sm-4">
-                                    <select name="dormitorios" class="selectpicker form-control">
+                                    <select name="dormitorios" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Dormitórios</option>
                                         <option <% if(form.dormitorios ) { %>
                                             <%= form.dormitorios == 1 ? 'selected' : ''%> <% }%> value="1">1
@@ -114,10 +132,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2 col-sm-4">
-                                    <select name="banheiros" class="selectpicker form-control">
+                                    <select name="banheiros" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Banheiros</option>
-                                        <option <% if(form.banheiros ) { %>
-                                            <%= form.banheiros == 1 ? 'selected' : ''%> <% }%> value="1">1</option>
+                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 1 ? 'selected' : ''%>
+                                            <% }%> value="1">1</option>
                                         <option <% if(form.banheiros ) { %> <%= form.banheiros == 2 ? 'selected' : ''%>
                                             <% }%> value="2">2</option>
                                         <option <% if(form.banheiros ) { %> <%= form.banheiros == 3 ? 'selected' : ''%>
@@ -127,7 +145,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2 col-sm-4">
-                                    <select name="cozinhas" class="selectpicker form-control">
+                                    <select name="cozinhas" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Cozinhas</option>
                                         <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 1 ? 'selected' : ''%>
                                             <% }%> value="1">1</option>
@@ -140,7 +158,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2 col-sm-4">
-                                    <select name="suites" class="selectpicker form-control">
+                                    <select name="suites" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Suítes</option>
                                         <option <% if(form.suites ) { %> <%= form.suites == 1 ? 'selected' : ''%> <% }%>
                                             value="1">1</option>
