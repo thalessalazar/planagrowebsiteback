@@ -263,20 +263,33 @@ module.exports = (req) => {
             }
         }
 
-        if (req.query.extensaomin || req.query.extensaomax) {
-            let rangeQuery = {}
-
-            if (req.query.extensaomin) {
-                rangeQuery.$gt = req.query.extensaomin;
-
+        if(req.query.areahec || req.query.areahec != '') {
+            let rangeQuery = {};
+            if(req.query.areahec == 50){
+                rangeQuery.$lt = 50;
             }
-
-            if (req.query.extensaomax) {
-                rangeQuery.$lt = req.query.extensaomax;
+            if(req.query.areahec == 50100) {
+                rangeQuery.$gt = 50;
+                rangeQuery.$lt = 100;
             }
-
-            query.extensao = rangeQuery;
+            if(req.query.areahec == 100) {
+                rangeQuery.$gt = 100;
+            }
         }
+
+        // if (req.query.extensaomin || req.query.extensaomax) {
+        //     let rangeQuery = {}
+
+        //     if (req.query.extensaomin) {
+        //         rangeQuery.$gt = req.query.extensaomin;
+        //     }
+
+        //     if (req.query.extensaomax) {
+        //         rangeQuery.$lt = req.query.extensaomax;
+        //     }
+
+        //     query.extensao = rangeQuery;
+        // }
     }
     return query;
 }
