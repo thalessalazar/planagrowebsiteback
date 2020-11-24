@@ -5054,3 +5054,7 @@ iframe {
         font-size: 15px !important;
     }
 }
+
+.z-index-10{
+    z-index: 10;
+}
