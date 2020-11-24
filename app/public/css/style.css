@@ -651,7 +651,7 @@ section {
 }
 
 .top_contact {
-    padding: 11px 0
+    padding: 7px 0
 }
 
 .top_contact>ul>li {
@@ -902,7 +902,7 @@ input[type=radio]:checked {
 }
 
 .nav-logo {
-    height: 50px;
+    height: 46px;
     width: auto
 }
 
@@ -947,7 +947,7 @@ input[type=radio]:checked {
     font-weight: 400;
     line-height: 86px;
     padding: 0 20px;
-    font-size: 15px
+    font-size: 13px
 }
 
 @media screen and (max-width: 1200px) {
@@ -1031,7 +1031,7 @@ input[type=radio]:checked {
 .submit_imovel>a {
     font-size: 13px;
     font-family: Montserrat, sans-serif;
-    padding: 12px 20px;
+    padding: 12px 18px;
     font-weight: 500;
     position: relative;
     float: right;
@@ -4015,8 +4015,8 @@ a.btn-read {
 
 @media screen and (max-width: 768px) {
     #slider-fixed {
-        height: 110vh !important;
-        margin-top: 80px;
+        height: 120vh !important;
+        margin-top: 50px;
     }
 }
 
@@ -5048,6 +5048,9 @@ iframe {
     .m-sm-0 {
         margin-bottom: 2px;
     }
+} 
+@media (max-width: 767px) {
+    .slider-search-2 h1 {
+        font-size: 15px !important;
+    }
 }
-
-
