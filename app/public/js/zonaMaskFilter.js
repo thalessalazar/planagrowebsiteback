@@ -26,28 +26,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     selectGenero.change();
-    
+
     if (document.querySelector('input[name="selectedTipo"]')) {
         const disableTodos = document.querySelector('#selectTipo').getAttribute('data-disableTipo');
         const tipoSelecionado = document.querySelector('input[name="selectedTipo"]').value,
             tiposUrbanos = `<optgroup label="Tipos Urbanos" id="selectUrbano">
-                                ${ !disableTodos ? '<option value="">Todos</option>' : '' }
-                                <option ${"Casa"==tipoSelecionado?"selected":""} value="Casa">Casa</option>
-                                <option ${"Apartamento"==tipoSelecionado?"selected":""} value="Apartamento">Apartamento</option>
-                                <option ${"Kitnet"==tipoSelecionado?"selected":""} value="Kitnet">Kitnet</option>   
-                                <option ${"Salão Comercial"==tipoSelecionado?"selected":""} value="Salão Comercial">Prédio Comercial</option>
-                                <option ${"Escritório"==tipoSelecionado?"selected":""} value="Escritório">Escritório</option>
-                                <option ${"Terreno"==tipoSelecionado?"selected":""} value="Terreno">Terreno</option>
-                                <option ${"Chácara"==tipoSelecionado?"selected":""} value="Chácara">Chácara</option>
+                                ${!disableTodos ? '<option value="">Todos</option>' : ''}
+                                <option ${"Casa" == tipoSelecionado ? "selected" : ""} value="Casa">Casa</option>
+                                <option ${"Apartamento" == tipoSelecionado ? "selected" : ""} value="Apartamento">Apartamento</option>
+                                <option ${"Kitnet" == tipoSelecionado ? "selected" : ""} value="Kitnet">Kitnet</option>   
+                                <option ${"Salão Comercial" == tipoSelecionado ? "selected" : ""} value="Salão Comercial">Prédio Comercial</option>
+                                <option ${"Escritório" == tipoSelecionado ? "selected" : ""} value="Escritório">Escritório</option>
+                                <option ${"Terreno" == tipoSelecionado ? "selected" : ""} value="Terreno">Terreno</option>
+                                <option ${"Chácara" == tipoSelecionado ? "selected" : ""} value="Chácara">Chácara</option>
                             </optgroup>`,
 
             tiposRurais = `<optgroup label="Tipos Rurais" id="selectRural">
-                                ${ !disableTodos ? '<option value="">Todos</option>' : '' }
-                                <option ${"Chácara"==tipoSelecionado?"selected":""} value="Chácara">Chácara</option>
-                                <option ${"Sítio"==tipoSelecionado?"selected":""} value="Sítio">Sítio</option>  
-                                <option ${"Campo"==tipoSelecionado?"selected":""} value="Campo">Campo</option>
-                                <option ${"Terreno"==tipoSelecionado?"selected":""} value="Terreno">Terreno</option>
-                                <option ${"Lavoura"==tipoSelecionado?"selected":""} value="Lavoura">Lavoura</option>
+                                ${!disableTodos ? '<option value="">Todos</option>' : ''}
+                                <option ${"Chácara" == tipoSelecionado ? "selected" : ""} value="Chácara">Chácara</option>
+                                <option ${"Sítio" == tipoSelecionado ? "selected" : ""} value="Sítio">Sítio</option>  
+                                <option ${"Campo" == tipoSelecionado ? "selected" : ""} value="Campo">Campo</option>
+                                <option ${"Terreno" == tipoSelecionado ? "selected" : ""} value="Terreno">Terreno</option>
+                                <option ${"Lavoura" == tipoSelecionado ? "selected" : ""} value="Lavoura">Lavoura</option>
                             </optgroup>`,
 
             tiposVazio = `<option disabled selected  label="Zona não selecionada"> Tipo de imóvel </option>
@@ -71,7 +71,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setForm(), $("#selectZona").change(setForm)
     }
+
+
     $("#selectMunicipio").change(function () {
-        "Bagé" == $(this).val() ? ($("#bageLocalidades").removeClass("hidden"), $("#bageLocalidades").addClass("visible")) : $("#bageLocalidades").addClass("hidden")
+        if ($(this).val() == "Bagé") {
+            $("#bageLocalidades").removeClass("hidden");
+            $("#bageLocalidades").addClass("visible");
+
+            $("#outrasLocalidades").addClass("hidden");
+            $("#outrasLocalidades").removeClass("visible");
+
+            $("#defaultLocalidades").addClass("hidden");
+            $("#defaultLocalidades").removeClass("visible");
+        }
+        if ($(this).val() != "Bagé") {
+            $("#outrasLocalidades").removeClass("hidden");
+            $("#outrasLocalidades").addClass("visible");
+
+            $("#bageLocalidades").addClass("hidden");
+            $("#bageLocalidades").removeClass("visible");
+
+            $("#defaultLocalidades").addClass("hidden");
+            $("#defaultLocalidades").removeClass("visible");
+        }
     });
+
+
+    // $("#selectMunicipio").change(function () {
+    //     "Bagé" == $(this).val() ?
+    //         ($("#bageLocalidades").removeClass("hidden"), $("#bageLocalidades").addClass("visible"),
+    //             $("$defaultLocalidades").addClass("hidden"), $("#defaultLocalidades").removeClass("visible")) :
+    //         ($("#bageLocalidades").addClass("hidden"), $("defaultLocalidades").addClass("hidden"))
+
+    // });
+    // $("#selectMunicipio").change(function () {
+    //     "Bagé" != $(this).val() ?
+    //         ($("#outrasLocalidades").removeClass("hidden"), $("#outrasLocalidades").addClass("visible"),
+    //             $("$defaultLocalidades").addClass("hidden"), $("#defaultLocalidades").removeClass("visible")) :
+    //         ($("#outrasLocalidades").addClass("hidden"), $("#defaultLocalidades").addClass("hidden"))
+
+    // });
+
 });

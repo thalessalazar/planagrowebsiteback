@@ -4076,7 +4076,7 @@ a.btn-read {
     height: 93vh;
     position: relative
 }
-
+/* 
 #slider-fixed.no-webp {
     background: url(../img/fixed-slider.jpg) no-repeat fixed;
     background-size: cover;
@@ -4087,7 +4087,7 @@ a.btn-read {
     background: url(../img/fixed-slider.webp) no-repeat fixed;
     background-size: cover;
     background-position: center center;
-}
+} */
 
 .fix-banner {
     height: 100%;
@@ -4922,9 +4922,8 @@ a.btn-read {
 }
 
 .sponsor {
-    width: 100%;
+    width: auto;
     margin-top: 12px;
-    padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
     text-align: center;
@@ -4939,6 +4938,10 @@ a.btn-read {
         margin-top: 12px;
         margin-bottom: 12px;
     }
+}
+
+.sponsor-a-disabled{
+    pointer-events: none;
 }
 
 .ordenador {

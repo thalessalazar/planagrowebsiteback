@@ -16,19 +16,23 @@ exports.getIndex = (req, res, next) => {
                         Depoimento.find()
                         .then(deps => {
                             Banner.find({ referente: 'home' }).then(banner => {
-                                res.render('shop/home', {
-                                    pageTitle: "Início",
-                                    path: "/",
-                                    props: props,
-                                    sobre: sobre,
-                                    deps: deps,
-                                    robotsFollow: true,
-                                    contact: true,
-                                    genero: 'Ambos',
-                                    bairroBage: bairroBage,
-                                    banner: banner,
-                                    csrfToken: req.csrfToken()
-                                });
+                                Banner.find({referente: 'home-filtro'}).then(bannerFiltro => {
+                                    res.render('shop/home', {
+                                        pageTitle: "Início",
+                                        path: "/",
+                                        props: props,
+                                        sobre: sobre,
+                                        deps: deps,
+                                        robotsFollow: true,
+                                        contact: true,
+                                        genero: 'Ambos',
+                                        bairroBage: bairroBage,
+                                        banner: banner,
+                                        bannerFiltro: bannerFiltro,
+                                        csrfToken: req.csrfToken()
+                                    });
+                                })
+                                    .catch(err => next(err));
                             })
                                 .catch(err => next(err));
                         })

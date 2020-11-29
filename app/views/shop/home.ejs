@@ -9,7 +9,13 @@
         <%- include('../includes/components/nav') %>
 
         <!-- Slider Part Start -->
-        <section id="slider-fixed" class="img-webp">
+
+        <% if(bannerFiltro[0].fixed) { %>
+        <section id="slider-fixed" class="" style="background: url(<%=bannerFiltro[0].image.url%>) no-repeat fixed ; background-position: center center; background-size: cover;">
+        <% } else {%>
+        <section id="slider-fixed" class="" style="background: url(<%=bannerFiltro[0].image.url%>) no-repeat; background-position: center center; background-size: cover;">
+        <% } %>
+        
             <div class="fix-banner">
                 <div class="carousel-caption">
                     <div class="container">
@@ -44,7 +50,8 @@
                                             <input type="text" name="keyword" class="form-control"
                                                 placeholder="Por palavra chave...">
                                         </div>
-    
+                                     
+
                                         <div class="col-md-3 col-sm-6">
                                             <select name="zona" class="selectpicker form-control" title="Zona Urbana ou Rural?"
                                                 id="selectZona">
@@ -78,11 +85,11 @@
                                             <select name="areahec" class="selectpicker form-control" id="selectAreahec" title="Área Hec">
                                                 <option value="50">Até 50 hec.</option>
                                                 <option value="50100">De 50 hec. até 100 hec.</option>
-                                                <option value="100">Mais de 100.</option>
+                                                <option value="100">Mais de 100 hec.</option>
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3 col-sm-6 col-xs-6 hidden rural-form">
+                                        <div class="col-md-3 col-sm-6 col-xs-12 hidden rural-form">
                                             <select name="regiao" data-size="4" class="selectpicker form-control" id="selectRegiao" title="Região">
                                                 <option value="Todas">Todas</option>
                                                 <option value="Bagé">Bagé</option>
@@ -93,7 +100,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3 col-sm-6 rural-form">
+                                        <div class="col-md-3 col-sm-6 col-xs-12 rural-form">
                                             <select name="tipoRural" class="selectpicker form-control" title="Tipos de Propriedade">
                                                 <option value="Lavoura">Lavoura</option>
                                                 <option value="Campo">Campo</option>

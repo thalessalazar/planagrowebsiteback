@@ -1,12 +1,12 @@
-<div class="col-md-12 sponsor">
-    <% if(bannerimoveis[0].linkbotao != '' || bannerimoveis[0].linkbotao == undefined) { %>
-    <a href="https://www.google.com.br" target="_blank">
-        <img src="https://via.placeholder.com/1290x300" alt="" class="img-fluid">
+<div class="col-md-12 col-sm-12 col-xs-12 sponsor ">
+    <% if(bannerimoveis[0].linkbotao != '' && bannerimoveis[0].linkbotao != undefined) { %>
+    <a href="<%= bannerimoveis[0].linkbotao%>" target="_blank">
+        
+        <img src="<%= bannerimoveis[0].image.url %>" alt="" class="img-fluid">
     </a>
     <% } else {%>
-    <a>
-        <img src="https://via.placeholder.com/1290x300" alt="" class="img-fluid">
+    <a class="sponsor-a-disabled">
+        <img src="<%= bannerimoveis[0].image.url %>" alt="" class="img-fluid">
     </a>
     <% } %>
-
 </div>

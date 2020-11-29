@@ -213,9 +213,11 @@ module.exports = (req) => {
         }
 
         if (req.query.localidade && req.query.localidade != '') {
-            query.localidade = {
-                $regex: req.query.localidade,
-                $options: 'i'
+            if(req.query.municipio == 'Bagé') {
+                query.localidade = {
+                    $regex: req.query.localidade,
+                    $options: 'i'
+                }
             }
         }
 

@@ -27,46 +27,45 @@
 
                                 <!-- <input type="hidden" name="filtrando" value="Urbana"> -->
 
-                                <div class="col-md-2 col-sm-3">
+                                <div class="col-md-2 col-sm-4 col-xs-6 z-index-10">
                                     <input name="codigo" type="number" placeholder="Código" class="form-control"
                                         value="<%= form.codigo ? form.codigo : ''%>">
                                 </div>
 
-
-                                <div class="col-md-2 col-sm-3">
+                                <div class="col-md-2 col-sm-4 col-xs-6 z-index-10">
                                     <input name="cep" type="text" placeholder="CEP" class="form-control"
                                         value="<%= form.cep ? form.cep : ''%>">
                                 </div>
 
-                                <!-- <div class="col-md-2 col-sm-3">
-                                    <input name="cidade" type="text" placeholder="Cidade" class="form-control"
-                                        value="<%= //form.cidade ? form.cidade : ''%>">
-                                </div> -->
+                                <div class="col-md-3 col-sm-4 col-xs-6 z-index-10">
+                                    <input name="rua" type="text" placeholder="Rua" class="form-control"
+                                    value="<%= form.rua ? form.rua  : ''%>">
+                                </div>
 
-
-                                <div class="col-md-2 col-sm-3 urbano-form">
-                                    <select name="cidade" data-size="4" id="cidade" class="selectpicker form-control" onchange="definiBairro()">
+                                <div class="col-md-2 col-sm-4 col-xs-6 urbano-form">
+                                    <select name="cidade" data-size="4" id="cidade" class="selectpicker form-control"
+                                        onchange="definiBairro()">
                                         <option disabled selected>Cidade</option>
                                         <option value="Bagé">Bagé</option>
                                         <option value="Outros">Outros</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-3 urbano-form" id="bairro-default">
+                                <div class="col-md-3 col-sm-4 col-xs-6 urbano-form" id="bairro-default">
                                     <select name="bairro" data-size="4" class="selectpicker form-control">
                                         <option disabled selected value="">Bairro</option>
                                         <option disabled value="">Selecione uma cidade</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-3 urbano-form d-none" id="bairro-outros">
+                                <div class="col-md-3 col-sm-4 urbano-form d-none" id="bairro-outros">
                                     <select name="bairro_outros" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Bairro</option>
                                         <option value="">Outros</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-3 urbano-form d-none" id="bairro-bage">
+                                <div class="col-md-3 col-sm-4 urbano-form d-none" id="bairro-bage">
                                     <select name="bairro_bage" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Bairro</option>
                                         <% for(bairro of bairroBage) {%>
@@ -75,245 +74,86 @@
                                     </select>
                                 </div>
 
-
-
-                         
-
-                                <div class="col-md-3 col-sm-6">
-                                    <input name="rua" type="text" placeholder="Rua" class="form-control"
-                                        value="<%= form.rua ? form.rua : ''%>">
-                                </div>
-
                                 <!-- <div class="col-md-2 col-sm-4">
                                     <input name="bairro" type="text" placeholder="Bairro" class="form-control"
                                         value="<%=// form.bairro ? form.bairro : ''%>">
                                 </div> -->
 
-
-                                <div class="col-md-3 col-sm-6">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
                                     <select name="tipo" data-size="4" class="selectpicker form-control">
                                         <option selected disabled>Tipo</option>
                                         <option value="">Todos</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Casa' ? 'selected' : ''%>
-                                            <% }%> value="Casa">Casa</option>
-                                        <option <% if(form.tipo ) { %>
-                                            <%= form.tipo == 'Apartamento' ? 'selected' : ''%> <% }%>
-                                            value="Apartamento">Apartamento</option>\
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Kitnet' ? 'selected' : ''%>
-                                            <% }%> value="Kitnet">Kitnet</option>
-                                        <option <% if(form.tipo ) { %>
-                                            <%= form.tipo == 'Salão Comercial' ? 'selected' : ''%> <% }%>
-                                            value="Salão Comercial">Salão Comercial</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Escritório' ? 'selected' : ''%>
-                                            <% }%> value="Escritório">Escritório</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Terreno' ? 'selected' : ''%>
-                                            <% }%> value="Terreno">Terreno</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Chácara' ? 'selected' : ''%>
-                                            <% }%> value="Chácara">
-                                            Chácara</option>
+                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Casa' ? 'selected' : ''%><% }%> value="Casa">Casa</option>
+                                        <option <% if(form.tipo ) { %><%= form.tipo == 'Apartamento' ? 'selected' : ''%> <% }%>value="Apartamento">Apartamento</option>\
+                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Kitnet' ? 'selected' : ''%><% }%> value="Kitnet">Kitnet</option>
+                                        <option <% if(form.tipo ) { %><%= form.tipo == 'Salão Comercial' ? 'selected' : ''%> <% }%>value="Salão Comercial">Salão Comercial</option>
+                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Escritório' ? 'selected' : ''%><% }%> value="Escritório">Escritório</option>
+                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Terreno' ? 'selected' : ''%><% }%> value="Terreno">Terreno</option>
+                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Chácara' ? 'selected' : ''%><% }%> value="Chácara">Chácara</option>
                                     </select>
                                 </div>
 
-                                <div class="col-md-3 col-sm-4">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
                                     <select name="dormitorios" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Dormitórios</option>
-                                        <option <% if(form.dormitorios ) { %>
-                                            <%= form.dormitorios == 1 ? 'selected' : ''%> <% }%> value="1">1
-                                        </option>
-                                        <option <% if(form.dormitorios ) { %>
-                                            <%= form.dormitorios == 2 ? 'selected' : ''%> <% }%> value="2">2
-                                        </option>
-                                        <option <% if(form.dormitorios ) { %>
-                                            <%= form.dormitorios == 3 ? 'selected' : ''%> <% }%> value="3">3
-                                        </option>
-                                        <option <% if(form.dormitorios ) { %>
-                                            <%= form.dormitorios == 4 ? 'selected' : ''%> <% }%> value="4">4+
-                                        </option>
+                                        <option <% if(form.dormitorios ) { %><%= form.dormitorios == 1 ? 'selected' : ''%> <% }%> value="1">1</option>
+                                        <option <% if(form.dormitorios ) { %><%= form.dormitorios == 2 ? 'selected' : ''%> <% }%> value="2">2</option>
+                                        <option <% if(form.dormitorios ) { %><%= form.dormitorios == 3 ? 'selected' : ''%> <% }%> value="3">3</option>
+                                        <option <% if(form.dormitorios ) { %><%= form.dormitorios == 4 ? 'selected' : ''%> <% }%> value="4">4+</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-md-2 col-sm-4 col-xs-6">
                                     <select name="banheiros" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Banheiros</option>
-                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 1 ? 'selected' : ''%>
-                                            <% }%> value="1">1</option>
-                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 2 ? 'selected' : ''%>
-                                            <% }%> value="2">2</option>
-                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 3 ? 'selected' : ''%>
-                                            <% }%> value="3">3</option>
-                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 4 ? 'selected' : ''%>
-                                            <% }%> value="4">4+</option>
+                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 1 ? 'selected' : ''%><% }%> value="1">1</option>
+                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 2 ? 'selected' : ''%><% }%> value="2">2</option>
+                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 3 ? 'selected' : ''%><% }%> value="3">3</option>
+                                        <option <% if(form.banheiros ) { %> <%= form.banheiros == 4 ? 'selected' : ''%><% }%> value="4">4+</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-md-2 col-sm-4 col-xs-6">
                                     <select name="cozinhas" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Cozinhas</option>
-                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 1 ? 'selected' : ''%>
-                                            <% }%> value="1">1</option>
-                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 2 ? 'selected' : ''%>
-                                            <% }%> value="2">2</option>
-                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 3 ? 'selected' : ''%>
-                                            <% }%> value="3">3</option>
-                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 4 ? 'selected' : ''%>
-                                            <% }%> value="4">4+</option>
+                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 1 ? 'selected' : ''%><% }%> value="1">1</option>
+                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 2 ? 'selected' : ''%><% }%> value="2">2</option>
+                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 3 ? 'selected' : ''%><% }%> value="3">3</option>
+                                        <option <% if(form.cozinhas ) { %> <%= form.cozinhas == 4 ? 'selected' : ''%><% }%> value="4">4+</option>
                                     </select>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-md-2 col-sm-4 col-xs-6">
                                     <select name="suites" data-size="4" class="selectpicker form-control">
                                         <option disabled selected>Suítes</option>
-                                        <option <% if(form.suites ) { %> <%= form.suites == 1 ? 'selected' : ''%> <% }%>
-                                            value="1">1</option>
-                                        <option <% if(form.suites ) { %> <%= form.suites == 2 ? 'selected' : ''%> <% }%>
-                                            value="2">2</option>
-                                        <option <% if(form.suites ) { %> <%= form.suites == 3 ? 'selected' : ''%> <% }%>
-                                            value="3">3</option>
-                                        <option <% if(form.suites ) { %> <%= form.suites == 4 ? 'selected' : ''%> <% }%>
-                                            value="4">4+</option>
+                                        <option <% if(form.suites ) { %> <%= form.suites == 1 ? 'selected' : ''%> <% }%>value="1">1</option>
+                                        <option <% if(form.suites ) { %> <%= form.suites == 2 ? 'selected' : ''%> <% }%>value="2">2</option>
+                                        <option <% if(form.suites ) { %> <%= form.suites == 3 ? 'selected' : ''%> <% }%>value="3">3</option>
+                                        <option <% if(form.suites ) { %> <%= form.suites == 4 ? 'selected' : ''%> <% }%>value="4">4+</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3 col-sm-4">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
                                     <select name="patio" class="selectpicker form-control">
                                         <option disabled selected>Pátio</option>
-                                        <option <% if(form.patio ) { %> <%= form.patio == 'true' ? 'selected' : ''%>
-                                            <% }%> value="true">Sim</option>
-                                        <option <% if(form.patio ) { %> <%= form.patio == 'false' ? 'selected' : ''%>
-                                            <% }%> value="false">Não
-                                        </option>
+                                        <option <% if(form.patio ) { %> <%= form.patio == 'true' ? 'selected' : ''%><% }%> value="true">Sim</option>
+                                        <option <% if(form.patio ) { %> <%= form.patio == 'false' ? 'selected' : ''%><% }%> value="false">Não</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3 col-sm-4">
+                                <div class="col-md-3 col-sm-4 col-xs-6">
                                     <select name="piscina" class="selectpicker form-control">
                                         <option disabled selected>Piscina</option>
-                                        <option <% if(form.piscina ) { %>
-                                            <%= form.piscina == 'false' ? 'selected' : ''%> <% }%> value="true">Sim
-                                        </option>
-                                        <option <% if(form.piscina ) { %>
-                                            <%= form.piscina == 'false' ? 'selected' : ''%> <% }%> value="false">Não
-                                        </option>
+                                        <option <% if(form.piscina ) { %><%= form.piscina == 'false' ? 'selected' : ''%> <% }%> value="true">Sim</option>
+                                        <option <% if(form.piscina ) { %><%= form.piscina == 'false' ? 'selected' : ''%> <% }%> value="false">Não</option>
                                     </select>
                                 </div>
-                                <% if( !genero || genero == 'Ambos' || genero == 'Venda') { %>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="valmin" class="selectpicker form-control">
-                                        <option selected disabled>Valor Min.</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 0 ? 'selected' : ''%> <% }%>
-                                            value="0">Qualquer valor</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 100000 ? 'selected' : ''%>
-                                            <% }%> value="100000">
-                                            R$100,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 200000 ? 'selected' : ''%>
-                                            <% }%> value="200000">
-                                            R$200,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 400000 ? 'selected' : ''%>
-                                            <% }%> value="400000">
-                                            R$400,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 600000 ? 'selected' : ''%>
-                                            <% }%> value="600000">
-                                            R$600,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 800000 ? 'selected' : ''%>
-                                            <% }%> value="800000">
-                                            R$800,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 1000000 ? 'selected' : ''%>
-                                            <% }%> value="1000000">
-                                            R$1,000,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 1500000 ? 'selected' : ''%>
-                                            <% }%> value="1500000">
-                                            R$1,500,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 2500000 ? 'selected' : ''%>
-                                            <% }%> value="2500000">
-                                            R$2,500,000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 3000000 ? 'selected' : ''%>
-                                            <% }%> value="3000000">
-                                            R$3,000,000,00</option>
-                                    </select>
+                                
+                                <div class="col-md-3 col-sm-6 col-xs-6 urbano-form z-index-10">
+                                    <input type="text" name="valmin" class="form-control moneyInput"
+                                        placeholder="Valor mín">
                                 </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="valmax" class="selectpicker form-control">
-                                        <option selected disabled>Valor Max.</option>
-                                        <option <% if(form.valmax ) { %>
-                                            <%= form.valmax == 1000000000000 ? 'selected' : ''%> <% }%>
-                                            value="1000000000000">Qualquer valor</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 100000 ? 'selected' : ''%>
-                                            <% }%> value="100000">
-                                            R$100,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 200000 ? 'selected' : ''%>
-                                            <% }%> value="200000">
-                                            R$200,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 400000 ? 'selected' : ''%>
-                                            <% }%> value="400000">
-                                            R$400,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 600000 ? 'selected' : ''%>
-                                            <% }%> value="600000">
-                                            R$600,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 800000 ? 'selected' : ''%>
-                                            <% }%> value="800000">
-                                            R$800,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 1000000 ? 'selected' : ''%>
-                                            <% }%> value="1000000">
-                                            R$1,000,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 1500000 ? 'selected' : ''%>
-                                            <% }%> value="1500000">
-                                            R$1,500,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 2500000 ? 'selected' : ''%>
-                                            <% }%> value="2500000">
-                                            R$2,500,000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 3000000 ? 'selected' : ''%>
-                                            <% }%> value="3000000">
-                                            R$3,000,000,00</option>
-                                    </select>
+
+                                <div class="col-md-3 col-sm-6 col-xs-6 urbano-form z-index-10">
+                                    <input type="text" name="valmax" class="form-control moneyInput"
+                                        placeholder="Valor máx">
                                 </div>
-                                <% } else{ %>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="valmin" class="selectpicker form-control">
-                                        <option selected disabled>Valor Min.</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 0 ? 'selected' : ''%> <% }%>
-                                            value="0">Qualquer valor</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 100 ? 'selected' : ''%>
-                                            <% }%> value="100">R$100,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 200 ? 'selected' : ''%>
-                                            <% }%> value="200">R$200,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 400 ? 'selected' : ''%>
-                                            <% }%> value="400">R$400,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 600 ? 'selected' : ''%>
-                                            <% }%> value="600">R$600,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 800 ? 'selected' : ''%>
-                                            <% }%> value="800">R$800,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 1000 ? 'selected' : ''%>
-                                            <% }%> value="1000">R$1000,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 1500 ? 'selected' : ''%>
-                                            <% }%> value="1500">R$1.500,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 2500 ? 'selected' : ''%>
-                                            <% }%> value="2500">R$2.500,00</option>
-                                        <option <% if(form.valmin ) { %> <%= form.valmin == 3000 ? 'selected' : ''%>
-                                            <% }%> value="3000">R$3.000,00</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="valmax" class="selectpicker form-control">
-                                        <option selected disabled>Valor Max.</option>
-                                        <option <% if(form.valmax ) { %>
-                                            <%= form.valmax == 1000000000000 ? 'selected' : ''%> <% }%>
-                                            value="1000000000000">Qualquer valor</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 100 ? 'selected' : ''%>
-                                            <% }%> value="100">R$100,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 200 ? 'selected' : ''%>
-                                            <% }%> value="200">R$200,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 400 ? 'selected' : ''%>
-                                            <% }%> value="400">R$400,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 600 ? 'selected' : ''%>
-                                            <% }%> value="600">R$600,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 800 ? 'selected' : ''%>
-                                            <% }%> value="800">R$800,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 1000 ? 'selected' : ''%>
-                                            <% }%> value="1000">R$1.000,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 1500 ? 'selected' : ''%>
-                                            <% }%> value="1500">R$1.500,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 2500 ? 'selected' : ''%>
-                                            <% }%> value="2500">R$2.500,00</option>
-                                        <option <% if(form.valmax ) { %> <%= form.valmax == 3 ? 'selected' : ''%> <% }%>
-                                            value="3000">R$3.000,00</option>
-                                    </select>
-                                </div>
-                                <% } %>
+
                                 <div class="col-12 send-filter-btns">
                                     <button type="submit" class="btn btn-default-outline"> <i class="fa fa-filter"></i>
                                         Filtrar Imóveis!</button>
@@ -323,193 +163,125 @@
                                         Reiniciar filtros</a>
                                 </div>
                             </form>
+
+
+                            <!-- FORM PARA ZONA RURAL -->
                             <form id="filtros-rural" class="hidden filter-form" method="GET" action="/comprar">
-                                <input type="hidden" name="zona" value="Rural">
-                                <input type="hidden" name="filtrando" value="Rural">
-                                <input type="hidden" name="genero" value="<%= genero %>">
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="tipo" class="selectpicker form-control">
-                                        <option disabled selected>Tipo</option>
-                                        <option value="">Todos</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Chácara' ? 'selected' : ''%>
-                                            <% }%> value="Chácara">
-                                            Chácara</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Sítio' ? 'selected' : ''%>
-                                            <% }%> value="Sítio">Sítio</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Campo' ? 'selected' : ''%>
-                                            <% }%> value="Campo">Campo</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Terreno' ? 'selected' : ''%>
-                                            <% }%> value="Terreno">
-                                            Terreno</option>
-                                        <option <% if(form.tipo ) { %> <%= form.tipo == 'Lavoura' ? 'selected' : ''%>
-                                            <% }%> value="Lavoura">
-                                            Lavoura</option>
-                                    </select>
+                                <div class="row">
+                                    <input type="hidden" name="zona" value="Rural">
+                                    <input type="hidden" name="filtrando" value="Rural">
+                                    <input type="hidden" name="genero" value="<%= genero %>">
+
+                                    <div class="col-md-2 col-sm-4 col-xs-6 z-index-10">
+                                        <input name="codigo" type="number" placeholder="Código" class="form-control"
+                                            value="<%= form.codigo ? form.codigo : ''%>">
+                                    </div>
+
+                                    <div class="col-md-2 col-sm-6">
+                                        <select name="tipo" data-size="4" class="selectpicker form-control">
+                                            <option disabled selected>Tipo</option>
+                                            <option value="">Todos</option>
+                                            <option <% if(form.tipo ) { %> <%= form.tipo == 'Chácara' ? 'selected' : ''%><% }%> value="Chácara">Chácara</option>
+                                            <option <% if(form.tipo ) { %> <%= form.tipo == 'Sítio' ? 'selected' : ''%><% }%> value="Sítio">Sítio</option>
+                                            <option <% if(form.tipo ) { %> <%= form.tipo == 'Campo' ? 'selected' : ''%><% }%> value="Campo">Campo</option>
+                                            <option <% if(form.tipo ) { %> <%= form.tipo == 'Terreno' ? 'selected' : ''%><% }%> value="Terreno">Terreno</option>
+                                            <option <% if(form.tipo ) { %> <%= form.tipo == 'Lavoura' ? 'selected' : ''%><% }%> value="Lavoura">Lavoura</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6   rural-form">
+                                        <select name="finalidade" class="selectpicker form-control" id="selectFinalidade" title="Finalidade">
+                                            <option <% if (form.finalidade) {%> <%= form.finalidade == 'Pecuária' ? 'selected' : ''%> <% } %>value="Pecuária">Pecuária</option>
+                                            <option <% if (form.finalidade) {%> <%= form.finalidade == 'Lavoura' ? 'selected' : ''%> <% } %>value="Lavoura">Lavoura</option>
+                                            <option <% if (form.finalidade) {%> <%= form.finalidade == 'Ambos' ? 'selected' : ''%> <% } %>value="Ambos">Ambos</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6 z-index-10">
+                                        <select name="municipio" data-size="4" class="selectpicker form-control" id="selectMunicipio" title="Município">
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Lavoura' ? 'selected' : ''%> <% }%> value="Aceguá">Aceguá</option>
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Bagé' ? 'selected' : ''%> <% }%> value="Bagé">Bagé</option>
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Candiota' ? 'selected' : ''%> <% }%>value="Candiota">Candiota</option>
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Dom Pedrito' ? 'selected' : ''%> <% }%>value="Dom Pedrito">Dom Pedrito</option>
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Hulha Negra' ? 'selected' : ''%> <% }%>value="Hulha Negra">Hulha Negra</option>
+                                            <option <% if(form.municipio ) { %><%= form.municipio == 'Outros' ? 'selected' : ''%> <% }%> value="Outros">Outros</option>
+                                        </select>
+                                    </div>
+                                    <!-- Só é exibido se o município for Bagé -->
+                                    
+                                    <div class="col-md-3 col-sm-6" id="defaultLocalidades">
+                                        <select name="defaultLocalidade" class="selectpicker form-control" title="Localidade">
+                                            <option disabled >Selecione um Munícipio</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 hidden" id="outrasLocalidades">
+                                        <select name="outrasLocalidades" class="selectpicker form-control" title="Localidade">
+                                            <option>Outros</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 hidden" id="bageLocalidades">
+                                        <select name="localidade" class="selectpicker form-control" title="Localidade">
+                                            <option <% if(form.localidade ) { %><%= form.localidade == 'Igrejinha' ? 'selected' : ''%> <% }%>value="Igrejinha">Igrejinha</option>
+                                            <option <% if(form.localidade ) { %><%= form.localidade == 'Palmas' ? 'selected' : ''%> <% }%> value="Palmas">Palmas</option>
+                                            <option <% if(form.localidade ) { %><%= form.localidade == 'Piraí' ? 'selected' : ''%> <% }%> value="Piraí">Piraí</option>
+                                            <option <% if(form.localidade ) { %><%= form.localidade == 'Outros' ? 'selected' : ''%> <% }%> value="Outros">Outros</option>
+                                        </select>
+                                    </div>
+                            
+                                    <div class="col-md-2 col-sm-6">
+                                        <select name="acudes" data-size="2" class="selectpicker form-control" title="Açudes">
+                                            <option <% if(form.acudes ) { %> <%= form.acudes == 1 ? 'selected' : ''%> <% }%>value="1">1</option>
+                                            <option <% if(form.acudes ) { %> <%= form.acudes == 2 ? 'selected' : ''%> <% }%>value="2">2</option>
+                                            <option <% if(form.acudes ) { %> <%= form.acudes == 3 ? 'selected' : ''%> <% }%>value="3">3</option>
+                                            <option <% if(form.acudes ) { %> <%= form.acudes == 4 ? 'selected' : ''%> <% }%>value="4">4+</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6">
+                                        <select name="mangueiras" data-size="2" class="selectpicker form-control" title="Mangueiras">
+                                            <option <% if(form.mangueiras ) { %><%= form.mangueiras == 1 ? 'selected' : ''%> <% }%> value="1">1</option>
+                                            <option <% if(form.mangueiras ) { %><%= form.mangueiras == 2 ? 'selected' : ''%> <% }%> value="2">2</option>
+                                            <option <% if(form.mangueiras ) { %><%= form.mangueiras == 3 ? 'selected' : ''%> <% }%> value="3">3</option>
+                                            <option <% if(form.mangueiras ) { %><%= form.mangueiras == 4 ? 'selected' : ''%> <% }%> value="4">4+</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6">
+                                        <select name="galpoes" data-size="2" class="selectpicker form-control" title="Galpões">
+                                            <option <% if(form.galpoes ) { %> <%= form.galpoes == 1 ? 'selected' : ''%><% }%> value="1">1</option>
+                                            <option <% if(form.galpoes ) { %> <%= form.galpoes == 2 ? 'selected' : ''%><% }%> value="2">2</option>
+                                            <option <% if(form.galpoes ) { %> <%= form.galpoes == 3 ? 'selected' : ''%><% }%> value="3">3</option>
+                                            <option <% if(form.galpoes ) { %> <%= form.galpoes == 4 ? 'selected' : ''%><% }%> value="4">4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6">
+                                        <select name="sedes" data-size="2" class="selectpicker form-control" title="Sedes">
+                                            <option <% if(form.sedes ) { %> <%= form.sedes == 1 ? 'selected' : ''%> <% }%>value="1">1</option>
+                                            <option <% if(form.sedes ) { %> <%= form.sedes == 2 ? 'selected' : ''%> <% }%>value="2">2</option>
+                                            <option <% if(form.sedes ) { %> <%= form.sedes == 3 ? 'selected' : ''%> <% }%>value="3">3</option>
+                                            <option <% if(form.sedes ) { %> <%= form.sedes == 4 ? 'selected' : ''%> <% }%>value="4">4+</option>
+                                        </select>
+                                    </div>
+                                   
+                                    <div class="col-md-4 col-sm-6 ">
+                                        <select name="areahec" class="selectpicker form-control" id="selectAreahec" title="Área Hec">
+                                            <option <% if(form.areahec) { %> <%= form.areahec == 50 ? 'selected' : ''%> <% }%>value="50">Até 50 hec.</option>
+                                            <option <% if(form.areahec) { %> <%= form.areahec == 50100 ? 'selected' : ''%> <% }%>value="50100">De 50 hec. até 100 hec.</option>
+                                            <option <% if(form.areahec) { %> <%= form.areahec == 100 ? 'selected' : ''%> <% }%>value="100">Mais de 100 hec.</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="municipio" class="selectpicker form-control" id="selectMunicipio">
-                                        <option disabled selected>Município</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Lavoura' ? 'selected' : ''%> <% }%> value="Aceguá">
-                                            Aceguá</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Bagé' ? 'selected' : ''%> <% }%> value="Bagé">
-                                            Bagé</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Candiota' ? 'selected' : ''%> <% }%>
-                                            value="Candiota">Candiota</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Dom Pedrito' ? 'selected' : ''%> <% }%>
-                                            value="Dom Pedrito">Dom Pedrito</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Hulha Negra' ? 'selected' : ''%> <% }%>
-                                            value="Hulha Negra">Hulha Negra</option>
-                                        <option <% if(form.municipio ) { %>
-                                            <%= form.municipio == 'Outros' ? 'selected' : ''%> <% }%> value="Outros">
-                                            Outros</option>
-                                    </select>
+                                
+                                <div class="row">
+                                    <div class="col-12 send-filter-btns">
+                                        <button type="submit" class="btn btn-default-outline"> <i class="fa fa-filter"></i>
+                                            Filtrar Imóveis!</button>
+                                        <a role="button" href="/comprar?filtrando=Rural" type="submit"
+                                            class="mt-2 btn btn-sm btn-default-outline">
+                                            <i class="fa fa-filter"></i>
+                                            Reiniciar filtros</a>
+                                    </div>
+                                    
                                 </div>
-                                <!-- Só é exibido se o município for Bagé -->
-                                <div class="col-md-3 col-sm-6 hidden" id="bageLocalidades">
-                                    <select name="localidade" class="selectpicker form-control">
-                                        <option disabled selected>Localidade</option>
-                                        <option <% if(form.localidade ) { %>
-                                            <%= form.localidade == 'Igrejinha' ? 'selected' : ''%> <% }%>
-                                            value="Igrejinha">Igrejinha</option>
-                                        <option <% if(form.localidade ) { %>
-                                            <%= form.localidade == 'Palmas' ? 'selected' : ''%> <% }%> value="Palmas">
-                                            Palmas</option>
-                                        <option <% if(form.localidade ) { %>
-                                            <%= form.localidade == 'Piraí' ? 'selected' : ''%> <% }%> value="Piraí">
-                                            Piraí</option>
-                                        <option <% if(form.localidade ) { %>
-                                            <%= form.localidade == 'Outros' ? 'selected' : ''%> <% }%> value="Outros">
-                                            Outros</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <input name="codigo" type="text" placeholder="Código" class="form-control"
-                                        value="<%= form.codigo ? form.codigo : ''%>">
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="extensaomin" class="selectpicker form-control">
-                                        <option selected disabled>Extensão Mínima</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 0 ? 'selected' : ''%> <% }%> value="0">Qualquer
-                                            valor</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 10 ? 'selected' : ''%> <% }%> value="10">10 hec.
-                                        </option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 50 ? 'selected' : ''%> <% }%> value="50">50 hec.
-                                        </option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 150 ? 'selected' : ''%> <% }%> value="150">150
-                                            hec.</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 300 ? 'selected' : ''%> <% }%> value="300">300
-                                            hec.</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 500 ? 'selected' : ''%> <% }%> value="500">500
-                                            hec.</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 700 ? 'selected' : ''%> <% }%> value="700">700
-                                            hec.</option>
-                                        <option <% if(form.extensaomin ) { %>
-                                            <%= form.extensaomin == 1000 ? 'selected' : ''%> <% }%> value="1000">de
-                                            1000 hec.</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select name="extensaomax" class="selectpicker form-control">
-                                        <option selected disabled>Extensão Máxima</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 100000000 ? 'selected' : ''%> <% }%>
-                                            value="100000000">Qualquer valor.</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 10 ? 'selected' : ''%> <% }%> value="10">10 hec.
-                                        </option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 50 ? 'selected' : ''%> <% }%> value="50">50 hec.
-                                        </option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 150 ? 'selected' : ''%> <% }%> value="150">150
-                                            hec.</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 300 ? 'selected' : ''%> <% }%> value="300">300
-                                            hec.</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 500 ? 'selected' : ''%> <% }%> value="500">500
-                                            hec.</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 700 ? 'selected' : ''%> <% }%> value="700">700
-                                            hec.</option>
-                                        <option <% if(form.extensaomax ) { %>
-                                            <%= form.extensaomax == 1000 ? 'selected' : ''%> <% }%> value="1000">
-                                            1000 hec.</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 col-sm-6">
-                                    <select name="acudes" class="selectpicker form-control">
-                                        <option disabled selected>Açudes</option>
-                                        <option <% if(form.acudes ) { %> <%= form.acudes == 1 ? 'selected' : ''%> <% }%>
-                                            value="1">1</option>
-                                        <option <% if(form.acudes ) { %> <%= form.acudes == 2 ? 'selected' : ''%> <% }%>
-                                            value="2">2</option>
-                                        <option <% if(form.acudes ) { %> <%= form.acudes == 3 ? 'selected' : ''%> <% }%>
-                                            value="3">3</option>
-                                        <option <% if(form.acudes ) { %> <%= form.acudes == 4 ? 'selected' : ''%> <% }%>
-                                            value="4">4+</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 col-sm-6">
-                                    <select name="mangueiras" class="selectpicker form-control">
-                                        <option disabled selected>Mangueiras</option>
-                                        <option <% if(form.mangueiras ) { %>
-                                            <%= form.mangueiras == 1 ? 'selected' : ''%> <% }%> value="1">1</option>
-                                        <option <% if(form.mangueiras ) { %>
-                                            <%= form.mangueiras == 2 ? 'selected' : ''%> <% }%> value="2">2</option>
-                                        <option <% if(form.mangueiras ) { %>
-                                            <%= form.mangueiras == 3 ? 'selected' : ''%> <% }%> value="3">3</option>
-                                        <option <% if(form.mangueiras ) { %>
-                                            <%= form.mangueiras == 4 ? 'selected' : ''%> <% }%> value="4">4+
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2 col-sm-6">
-                                    <select name="galpoes" class="selectpicker form-control">
-                                        <option disabled selected>Galpões</option>
-                                        <option <% if(form.galpoes ) { %> <%= form.galpoes == 1 ? 'selected' : ''%>
-                                            <% }%> value="1">1</option>
-                                        <option <% if(form.galpoes ) { %> <%= form.galpoes == 2 ? 'selected' : ''%>
-                                            <% }%> value="2">2</option>
-                                        <option <% if(form.galpoes ) { %> <%= form.galpoes == 3 ? 'selected' : ''%>
-                                            <% }%> value="3">3</option>
-                                        <option <% if(form.galpoes ) { %> <%= form.galpoes == 4 ? 'selected' : ''%>
-                                            <% }%> value="4">4</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 col-sm-6">
-                                    <select class="selectpicker form-control">
-                                        <option name="sedes" disabled selected>Sedes</option>
-                                        <option <% if(form.sedes ) { %> <%= form.sedes == 1 ? 'selected' : ''%> <% }%>
-                                            value="1">1</option>
-                                        <option <% if(form.sedes ) { %> <%= form.sedes == 2 ? 'selected' : ''%> <% }%>
-                                            value="2">2</option>
-                                        <option <% if(form.sedes ) { %> <%= form.sedes == 3 ? 'selected' : ''%> <% }%>
-                                            value="3">3</option>
-                                        <option <% if(form.sedes ) { %> <%= form.sedes == 4 ? 'selected' : ''%> <% }%>
-                                            value="4">4+</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 send-filter-btns">
-                                    <button type="submit" class="btn btn-default-outline"> <i class="fa fa-filter"></i>
-                                        Filtrar Imóveis!</button>
-                                    <a role="button" href="/comprar?filtrando=Rural" type="submit"
-                                        class="mt-2 btn btn-sm btn-default-outline">
-                                        <i class="fa fa-filter"></i>
-                                        Reiniciar filtros</a>
-                                </div>
+                               
                             </form>
                         </div>
                     </div>
