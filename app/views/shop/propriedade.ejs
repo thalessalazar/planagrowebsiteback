@@ -49,8 +49,8 @@
 									<a role="button" href="/comprar" class="btn btn-sm btn-default">Voltar para
 										propriedades</a>
 
-									<a role="button" data-lightbox="mygallery" href="<%= prop.mainImage.secure_url%>"
-										class="btn btn-sm btn-default"> <i class="fa fa-search"></i> Zoom</a>
+										<a role="button" data-lightbox="mygallery" href="<%= prop.mainImage ? prop.mainImage.secure_url : '/img/thumbs/imovel.jpg' %>"
+											class="btn btn-sm btn-default"> <i class="fa fa-search"></i> Zoom</a>
 								</div>
 							</div>
 							<% if(prop.mainImage || prop.images.length > 0) {%>
@@ -111,7 +111,7 @@
 										<% } %>
 									</span>
 									
-									<span style="margin-top: 5px;" id="descricaoSpan"></span>
+									<span style="margin-top: 5px;" class="descricaoSpan" id="descricaoSpan"></span>
 									<input id="descricao" type="text" hidden value="<%=prop.descricao%>">
 								</div>
 							</div>

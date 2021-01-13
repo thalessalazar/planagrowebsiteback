@@ -110,4 +110,5 @@ FINALIZAÇÃO DO MODULO DE BANNER X ROTAS X LAYOUT
 ****13/10/2020****
 FINALIZAÇÃO DO MODAL DE GALERIA NA /PROPRIEDADE DO SHOP
 ---------------------------------------------------------------------------
+
 */
