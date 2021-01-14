@@ -254,6 +254,38 @@ exports.postRedefineDefault = (req, res, next) => {
                 original_extension: "jpeg"
             }
         }
+    }
+    else if (referente == 'filtro-banner') {
+
+        bannerdefault = {
+            fixed: true,
+            titulo: '',
+            descricao: '',
+            textobotao: '',
+            linkbotao: '',
+            image: {
+                asset_id: "7a4214eea75dcb4f9585a140cccdf0ba",
+                public_id: "fbfh9sin9q8d1ya4q1la",
+                version: 1610632635,
+                version_id: "cc3b09658e390fbfb102dbe2c85afc60",
+                signature: "eec88740f57a9d9e49b31819cfe7ced3197461ae",
+                width: 1920,
+                height: 280,
+                format: "jpg",
+                resource_type: "image",
+                created_at: "2021-01-14T13:57:15Z",
+                tags: [],
+                bytes: 105790,
+                type: "upload",
+                etag: "4d62139df8afc3ed804a1931de5a47d4",
+                placeholder: false,
+                url: "http://res.cloudinary.com/dhenuhnbj/image/upload/v1610632635/fbfh9sin9q8d1ya4q1la.jpg",
+                secure_url: "https://res.cloudinary.com/dhenuhnbj/image/upload/v1610632635/fbfh9sin9q8d1ya4q1la.jpg",
+                access_mode: "public",
+                original_filename: "1610632633386-banner-filtros",
+                original_extension: "jpeg"
+            },
+        }
 
     } else {
         bannerdefault = {

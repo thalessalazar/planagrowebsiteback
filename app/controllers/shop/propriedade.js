@@ -94,7 +94,7 @@ exports.getComprar = (req, res, next) => {
     }
 
     console.log(query);
-    
+
     //teste genero da busca para puxar o banner referente aquele genero
     //se não for aluguel ou venda ele busca o banner do genero ambos que já foi presetado
     var generoBanner = 'Ambos';
@@ -127,7 +127,7 @@ exports.getComprar = (req, res, next) => {
                         props = props.sort((x, y) => {
                             return (x.destaque === y.destaque) ? 0 : x ? -1 : 1
                         })
-                    }                    
+                    }
 
                     Sobre.findOne()
                         .then(sobre => {
@@ -136,24 +136,29 @@ exports.getComprar = (req, res, next) => {
                                     if (req.query == {} || req.body == {}) {
                                         let prop = pclearps.sort()
                                     }
-                                    Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairroBage => {
-                                        res.render('shop/comprar', {
-                                            pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
-                                            props: props,
-                                            path: "/comprar",
-                                            hasNext: currentPage < totalPages,
-                                            hasPrevious: currentPage > 1,
-                                            totalPages,
-                                            currentPage,
-                                            robotsFollow: true,
-                                            sobre: sobre,
-                                            banner: banner,
-                                            bannerimoveis: bannerimoveis,
-                                            bairroBage: bairroBage,
-                                            contact: true,
-                                            form: req.query,
-                                            genero: req.body.genero || req.query.genero
-                                        });
+
+                                    Banner.find({ referente: 'filtro-banner' }).then(bannerFiltro => {
+                                        Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairroBage => {
+                                            res.render('shop/comprar', {
+                                                pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
+                                                props: props,
+                                                path: "/comprar",
+                                                hasNext: currentPage < totalPages,
+                                                hasPrevious: currentPage > 1,
+                                                totalPages,
+                                                currentPage,
+                                                robotsFollow: true,
+                                                sobre: sobre,
+                                                banner: banner,
+                                                bannerimoveis: bannerimoveis,
+                                                bairroBage: bairroBage,
+                                                bannerFiltro: bannerFiltro,
+                                                contact: true,
+                                                form: req.query,
+                                                genero: req.body.genero || req.query.genero
+                                            });
+                                        })
+                                            .catch(err => next(err, 500));
                                     })
                                         .catch(err => next(err, 500));
                                 })
@@ -175,7 +180,7 @@ exports.getPropiedade = (req, res, next) => {
         codigo: propCod
     })
         .then(prop => {
-            console.log(prop);  
+            console.log(prop);
             if (!prop) {
                 return res.redirect('/comprar');
             }
