@@ -33,7 +33,7 @@
 						<%- include('../../includes/form/errorBox') %>
 
 
-						<% if(banner.referente != 'entre-imoveis') {%>
+						<% if(banner.referente != 'entre-imoveis' && banner.referente != 'filtro-banner') {%>
 						<form action="/admin/banner/edit" method="POST" enctype="multipart/form-data">
 							<input type="text" hidden name="id" value="<%=banner._id%>">
 							<input type="text" hidden name="referente" value="<%=banner.referente%>">
@@ -98,10 +98,13 @@
 									<input name="" disabled type="text" placeholder="Texto Auxiliar" class="form-control"
 										value="Referente: <%=banner.referente%>">
 								</div>
-								<div class="col-md-6 col-sm-12">
-									<input name="" disabled type="text" placeholder="Texto Auxiliar" class="form-control"
-										value="Genero: <%=banner.genero%>">
-								</div>
+
+								<% if (banner.referente == 'entre-imoveis') {%>
+									<div class="col-md-6 col-sm-12">
+										<input name="" disabled type="text" placeholder="Texto Auxiliar" class="form-control"
+											value="Genero: <%=banner.genero%>">
+									</div>
+								<% } %>
 								<div class="col-md-12">
 									<div class="img-submit">
 										<input name="image" type="file" id="main-img-upload" />
