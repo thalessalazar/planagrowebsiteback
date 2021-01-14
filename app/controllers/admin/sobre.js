@@ -20,7 +20,7 @@ exports.getSobre = (req, res, next) => {
 exports.postSobre = (req, res, next) => {
     Sobre.findOne()
         .then(sobre => {
-
+            sobre.slogan = req.body.slogan;
             sobre.quemsomos = req.body.quemsomos;
             sobre.oquefazemos = req.body.oquefazemos;
             sobre.nossamissao = req.body.nossamissao;

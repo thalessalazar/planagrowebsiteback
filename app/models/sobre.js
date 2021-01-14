@@ -62,6 +62,10 @@ const Sobre = new Schema({
     diferencial4: {
         type: Object,
         required: false
+    },
+    slogan: {
+        type: String,
+        required: false
     }
 });
 
