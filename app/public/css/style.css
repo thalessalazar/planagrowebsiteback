@@ -1508,7 +1508,7 @@ input[type=radio]:checked {
 
 .bed_area {
     height: 50px;
-    border: .1px solid rgba(80, 16, 16, 0.733);
+    /* border: .1px solid rgba(80, 16, 16, 0.733); */
     border-bottom: none;
     border-top: 1px solid #e5e5e5;
     -moz-transition: all .2s ease-in-out;

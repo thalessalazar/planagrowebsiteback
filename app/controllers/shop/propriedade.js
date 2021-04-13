@@ -139,6 +139,10 @@ exports.getComprar = (req, res, next) => {
 
                                     Banner.find({ referente: 'filtro-banner' }).then(bannerFiltro => {
                                         Propiedade.find().distinct('bairro').where('cidade').equals('Bagé').then(bairroBage => {
+
+
+
+
                                             res.render('shop/comprar', {
                                                 pageTitle: "Comprar, alugar ou arrendar propiedades rurais ou urbanas",
                                                 props: props,

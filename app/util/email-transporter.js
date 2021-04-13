@@ -11,8 +11,6 @@ try {
 
 module.exports = () => {
     return nodemailer.createTransport(sendgridTransport({
-        auth: {
-            api_key: SENDGRID_KEY
-        }
+        auth: { api_key: SENDGRID_KEY }
     }));
 }

@@ -17,6 +17,10 @@ exports.getIndex = (req, res, next) => {
                         .then(deps => {
                             Banner.find({ referente: 'home' }).then(banner => {
                                 Banner.find({referente: 'home-filtro'}).then(bannerFiltro => {
+
+
+                                    // return res.json(props);
+
                                     res.render('shop/home', {
                                         pageTitle: "Início",
                                         path: "/",

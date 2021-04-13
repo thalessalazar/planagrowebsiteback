@@ -51,13 +51,11 @@ app.use(multer.single('image'));
 app.use(csurfProtection);
 app.use(express.static(path.join(__dirname, 'app/public')));
 
-const shopRoutes = require('./app/routes/shop');
-app.use(shopRoutes);
-
 const adminRoutes = require('./app/routes/admin');
 const authRoutes = require('./app/routes/auth');
 const errorRoutes = require('./app/controllers/error/server');
-
+const shopRoutes = require('./app/routes/shop');
+app.use(shopRoutes);
 app.use(authRoutes);
 app.use(adminRoutes);
 app.use(errorRoutes.get404);
