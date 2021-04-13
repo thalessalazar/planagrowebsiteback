@@ -134,7 +134,7 @@
                 <% } else {  %>
 
                 <% if( prop.precovenda || prop.precoaluguel) { %>
-                </i> R$ <span class="tomoney">
+                </i> R$ <span class="">
                     <%= prop.genero == 'Venda' ? prop.precovenda : (prop.genero == 'Aluguel' ? prop.precoaluguel : ( prop.genero === 'Ambos' && genero === 'Aluguel' ? prop.precoaluguel : prop.precovenda)) %></span>,00
                 <%= (prop.genero === 'Aluguel' || (prop.genero === 'Ambos' && genero === 'Aluguel')) && prop.taxas ? '+ taxas' : '' %>
                 <% } else {%>
