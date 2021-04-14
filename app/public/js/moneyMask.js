@@ -36,14 +36,23 @@ function formatMoney() {
 }
 
 function formatPrice() {
-    $('.tomoney').each(function (index) {
-        var value = $(this).html()
-        value = value.trimStart();
-        console.log(value)
-        $(this).html(toBRL(value));
+
+    const allElements = document.querySelectorAll('.tomoney');
+    allElements.forEach( (element) => {
+        element.innerHTML = toBRL(element.innerHTML);
     })
+
+
+    // $('.tomoney').each(function (index) {
+    //     var value = $(this).html()
+    //     value = value.trimStart();
+    //     console.log(value)
+    //     $(this).html(toBRL(value));
+    // })
 }
 
 function toBRL(value) {
-    return Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    var value = Number(value);
+    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
+
