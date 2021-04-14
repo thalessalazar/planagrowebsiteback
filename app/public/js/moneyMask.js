@@ -39,6 +39,11 @@ function formatPrice() {
 
     const allElements = document.querySelectorAll('.tomoney');
     allElements.forEach( (element) => {
+        
+        var formated = toBRL(element.innerHTML);
+        if(formated == NaN) {
+            alert(element.innerHTML);
+        }
         element.innerHTML = toBRL(element.innerHTML);
     })
 
