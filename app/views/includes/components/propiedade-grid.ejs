@@ -122,36 +122,27 @@
                 <i class="fa dollar-sign"></i>
                 <% if( prop.zona == 'Rural' ) { %>
                 <% if(prop.precoHec) { %>
-                </i> R$ <span class="tomoney">
-                    <%= prop.precoHec %></span>,00/hec
+                </i> <span class="tomoney">
+                    <%= prop.precoHec %></span>/hec
 
                 <% } else if( prop.precovenda) { %>
-                </i> R$ <span class="tomoney">
-                    <%= prop.precovenda %></span>,00
+                </i> <span class="tomoney">
+                    <%= prop.precovenda %></span>
                 <% } else {%>
                 Confira conosco!
                 <% } %>
                 <% } else {  %>
 
                 <% if( prop.precovenda || prop.precoaluguel) { %>
-                </i> R$ <span class="">
-                    <%= prop.genero == 'Venda' ? prop.precovenda : (prop.genero == 'Aluguel' ? prop.precoaluguel : ( prop.genero === 'Ambos' && genero === 'Aluguel' ? prop.precoaluguel : prop.precovenda)) %></span>,00
+                </i> <span class="tomoney">
+                    <%= prop.genero === 'Venda' ? prop.precovenda : (prop.genero === 'Aluguel' ? prop.precoaluguel : ( prop.genero === 'Ambos' && genero === 'Aluguel' ? prop.precoaluguel : prop.precovenda)) %></span>
                 <%= (prop.genero === 'Aluguel' || (prop.genero === 'Ambos' && genero === 'Aluguel')) && prop.taxas ? '+ taxas' : '' %>
                 <% } else {%>
                 Confira conosco!
                 <% } %>
                 <% } %>
             </li>
-            <!---
-            
-            <li class="flat-icon ">
-                <button class="share-button" type="button" data-codigo="<%= prop.codigo %>"
-                    data-titulo="<%= prop.titulo %>" data-toggle="modal" data-target="#shareModal">
-                    <i class="flaticon-connections"></i>
-                </button>
-            </li>
-            
-            -->
+
         </ul>
     </div>
     <a href="<%= encodeURI(`https://api.whatsapp.com/send?phone=55${sobre.whatsapp}&text=Oi! Tenho interesse na propriedade "${prop.titulo}", código "${prop.codigo}". Pode me tirar algumas dúvidas? O link da propriedade é www.planagroimoveis.com.br/propriedade/${prop.codigo}`)%>"
