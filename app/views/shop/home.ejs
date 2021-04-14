@@ -316,8 +316,9 @@
                                     <% for(prop of props) {%>
                                         <div class="imovel_column col-12 col-md-4">
                                             <%- include('../includes/components/propiedade-grid') %>
-                                            <p><%= prop.precovenda%></p>
-                                            <p><%= prop.precoaluguel%></p>
+                                            <p><%= prop.precovenda %></p>
+                                            <p><%= typeof(prop.precovenda) %></p>
+                                            <p><%= prop.precoaluguel %></p>
                                         </div>
                                     <% } %>
                                 </div>
